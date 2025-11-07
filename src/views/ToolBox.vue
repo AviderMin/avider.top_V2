@@ -464,6 +464,10 @@ onMounted(() => {
   text-align: center;
   margin-bottom: var(--spacing-sm);
   color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
 }
 
 .page-description {
@@ -514,10 +518,15 @@ onMounted(() => {
 
 .category-icon {
   font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .category-name {
   font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
 }
 
 /* 工具卡片区域 */

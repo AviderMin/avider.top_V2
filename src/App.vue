@@ -200,10 +200,15 @@ onMounted(() => {
 
 .nav-icon {
   font-size: var(--font-size-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-text {
   font-size: var(--font-size-md);
+  display: flex;
+  align-items: center;
 }
 
 .navbar-actions {

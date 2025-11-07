@@ -3,7 +3,7 @@
     <!-- 页面标题 -->
     <section class="page-header">
       <div class="container">
-        <h1 class="page-title"><MonitorIcon :size="24" /> 电脑装机配置</h1>
+        <h1 class="page-title"><MonitorIcon :size="24" class="title-icon" /> 电脑装机配置</h1>
         <p class="page-description">6个主流价位配置单，Intel/AMD CPU和NVIDIA/AMD GPU性能排行榜</p>
       </div>
     </section>
@@ -330,6 +330,16 @@ onMounted(() => {
   text-align: center;
   margin-bottom: var(--spacing-sm);
   color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .page-description {
@@ -469,6 +479,7 @@ onMounted(() => {
   flex-direction: column;
   flex: 1;
   gap: var(--spacing-xs);
+  justify-content: center;
 }
 
 .component-name {
@@ -594,6 +605,17 @@ onMounted(() => {
   margin-bottom: var(--spacing-lg);
   padding-bottom: var(--spacing-md);
   border-bottom: 1px solid var(--border-color);
+}
+
+.ranking-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 .ranking-icon {

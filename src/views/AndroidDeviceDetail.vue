@@ -415,6 +415,12 @@ onMounted(async () => {
   box-shadow: var(--shadow-sm);
 }
 
+.back-btn svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .back-btn:hover {
   background: var(--primary-dark);
   border-color: var(--primary-dark);

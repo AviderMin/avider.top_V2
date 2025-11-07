@@ -191,6 +191,10 @@ onMounted(async () => {
   text-align: center;
   margin-bottom: var(--spacing-sm);
   color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
 }
 
 .page-description {
@@ -422,6 +426,9 @@ onMounted(async () => {
 
 .stat-icon {
   font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stat-value {

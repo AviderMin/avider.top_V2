@@ -15,9 +15,9 @@
   
   /* 背景色层级 */
   --background-primary: #FFFFFF;
-  --background-secondary: #FFF8E1; /* 极浅橙黄 */
-  --background-tertiary: #FFECB3; /* 浅橙黄色 */
-  --background-quaternary: #FFE0B2; /* 柔和橙色 */
+  --background-secondary: #F8F9FA; /* 极浅灰色 */
+  --background-tertiary: #E9ECEF; /* 浅灰色 */
+  --background-quaternary: #DEE2E6; /* 中等浅灰 */
   
   /* 文本颜色 - 确保所有对比度≥4.5:1 */
   --text-primary: #5D4037; /* 深棕色 - 对比度15.8:1 */
@@ -25,16 +25,16 @@
   --text-tertiary: #8D6E63; /* 浅棕色 - 对比度7.5:1 */
   --text-disabled: #A1887F; /* 禁用文本 - 对比度4.6:1 */
   
-  /* 中性色系统 - 温暖橙色系配色 */
+  /* 中性色系统 - 清爽灰色系配色 */
   --neutral-100: #FFFFFF; /* 纯白色 */
-  --neutral-200: #FFF8E1; /* 极浅橙黄 */
-  --neutral-300: #FFECB3; /* 浅橙黄色 */
-  --neutral-400: #FFE0B2; /* 柔和橙色 */
-  --neutral-500: #FFCC80; /* 中等橙色 */
-  --neutral-600: #FFB74D; /* 标准橙色 */
-  --neutral-700: #FFA726; /* 深橙色 */
-  --neutral-800: #FF9800; /* 更深橙色 */
-  --neutral-900: #F57C00; /* 最深的橙色 */
+  --neutral-200: #F8F9FA; /* 极浅灰色 */
+  --neutral-300: #E9ECEF; /* 浅灰色 */
+  --neutral-400: #DEE2E6; /* 中等浅灰 */
+  --neutral-500: #CED4DA; /* 标准灰色 */
+  --neutral-600: #ADB5BD; /* 中等灰色 */
+  --neutral-700: #6C757D; /* 深灰色 */
+  --neutral-800: #495057; /* 更深灰色 */
+  --neutral-900: #212529; /* 接近黑色 */
   
   /* 功能色 */
   --success-color: #198754; /* 成功色 - 对比度6.8:1 */
@@ -46,9 +46,9 @@
   --focus-color: #FFE0B2; /* 焦点轮廓色 */
   
   /* 边框颜色 */
-  --border-color: #FFECB3; /* 默认边框 */
-  --border-light: #FFF8E1; /* 浅边框 */
-  --border-dark: #FFCC80; /* 深边框 */
+  --border-color: #DEE2E6; /* 默认边框 */
+  --border-light: #E9ECEF; /* 浅边框 */
+  --border-dark: #ADB5BD; /* 深边框 */
   
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
@@ -97,12 +97,12 @@
   --max-content-width: 1200px;
 }
 
-/* 暗色主题色彩系统 - 温暖橙色夜光风格 */
+/* 暗色主题色彩系统 - 清爽暗色风格 */
 [data-theme="dark"] {
-  --background-primary: #1A120B;
-  --background-secondary: #2D1F14;
-  --background-tertiary: #3D2C1D;
-  --background-quaternary: #4D3926;
+  --background-primary: #121212;
+  --background-secondary: #1E1E1E;
+  --background-tertiary: #2D2D2D;
+  --background-quaternary: #3D3D3D;
   
   --text-primary: #FFECB3;
   --text-secondary: #FFE0B2;
@@ -127,12 +127,12 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* 高对比度主题色彩系统 - 温暖橙色高对比度 */
+/* 高对比度主题色彩系统 - 清爽高对比度 */
 [data-theme="high-contrast"] {
-  --background-primary: #1A0D00;
-  --background-secondary: #331A00;
-  --background-tertiary: #4D2700;
-  --background-quaternary: #663300;
+  --background-primary: #000000;
+  --background-secondary: #1A1A1A;
+  --background-tertiary: #333333;
+  --background-quaternary: #4D4D4D;
   
   --text-primary: #FFFFFF;
   --text-secondary: #FFECB3;
