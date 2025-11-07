@@ -36,6 +36,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/android/:deviceId/:resourceType/:resourceId',
+      name: 'AndroidResourceDetail',
+      component: AndroidDeviceDetail,
+      meta: {
+        title: '资源详情 - Avider.top'
+      }
+    },
+    {
       path: '/pc',
       name: 'PC',
       component: PCBuild,

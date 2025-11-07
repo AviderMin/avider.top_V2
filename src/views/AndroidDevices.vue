@@ -134,7 +134,7 @@ const getDownloadCount = (fileId: string) => {
 
 // 跳转到资源详情页面
 const goToResourceDetail = (deviceId: string, resourceType: string, resourceId: string) => {
-  router.push(`/android/${deviceId}`)
+  router.push(`/android/${deviceId}/${resourceType}/${resourceId}`)
 }
 
 // 获取设备图片路径
@@ -230,7 +230,7 @@ onMounted(async () => {
 
 .device-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(255, 215, 0, 0.15);
+  box-shadow: 0 12px 40px rgba(255, 215, 0, 0.15), 0 0 25px rgba(255, 240, 200, 0.5);
   border-color: #FFD700;
 }
 
@@ -362,27 +362,27 @@ onMounted(async () => {
 }
 
 .kernel-btn {
-  background: linear-gradient(135deg, #FFD700, #D4AF37);
+  background: linear-gradient(135deg, #FFD700, #FFE55C);
   color: #1a1a1a;
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 2px 12px rgba(255, 215, 0, 0.4);
 }
 
 .kernel-btn:hover {
-  background: linear-gradient(135deg, #D4AF37, #B8860B);
+  background: linear-gradient(135deg, #FFD700, #FFE55C, #FFF0C8);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6), 0 0 25px rgba(255, 240, 200, 0.8);
 }
 
 .recovery-btn {
-  background: linear-gradient(135deg, #FFD700, #D4AF37);
+  background: linear-gradient(135deg, #FFD700, #FFE55C);
   color: #1a1a1a;
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 2px 12px rgba(255, 215, 0, 0.4);
 }
 
 .recovery-btn:hover {
-  background: linear-gradient(135deg, #D4AF37, #B8860B);
+  background: linear-gradient(135deg, #FFD700, #FFE55C, #FFF0C8);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6), 0 0 25px rgba(255, 240, 200, 0.8);
 }
 
 /* 响应式设计 */

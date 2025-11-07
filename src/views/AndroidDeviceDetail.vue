@@ -59,65 +59,113 @@
 
           <!-- 右侧区域：资源信息、更新日志和下载 -->
           <div class="right-panel">
-            <!-- 内核资源 -->
-            <div class="resource-section">
-              <h3 class="section-title">内核文件</h3>
-              <div class="resource-list">
-                <div v-for="kernel in device?.kernels" :key="kernel.id" class="resource-item">
-                  <div class="resource-info">
-                    <h4 class="resource-name">{{ kernel.version }}</h4>
-                    <p class="resource-meta">
-                      <span class="resource-date">{{ kernel.date }}</span>
-                      <span class="resource-size">{{ kernel.size }}</span>
-                    </p>
-                    <p class="resource-description">{{ kernel.description }}</p>
-                    <div class="changelog" v-if="kernel.changelog && kernel.changelog.length > 0">
-                      <h5 class="changelog-title">更新日志：</h5>
-                      <ul class="changelog-list">
-                        <li v-for="(log, index) in kernel.changelog" :key="index">{{ log }}</li>
-                      </ul>
+            <!-- 资源详情页面 -->
+            <div v-if="isResourceDetailPage" class="resource-detail-section">
+              <div v-if="currentResource" class="resource-detail">
+                <h3 class="section-title">
+                  {{ resourceType === 'kernel' ? '内核文件' : '橙狐Recovery' }}详情
+                </h3>
+                <div class="resource-detail-content">
+                  <div class="resource-header">
+                    <h4 class="resource-name">
+                      {{ resourceType === 'kernel' ? currentResource.version : currentResource.name + ' ' + currentResource.version }}
+                    </h4>
+                    <div class="resource-meta">
+                      <span class="resource-date">{{ currentResource.date }}</span>
+                      <span class="resource-size">{{ currentResource.size }}{{ currentResource.sizeUnit ? '' : 'MB' }}</span>
                     </div>
                   </div>
+                  
+                  <div class="resource-description">
+                    <h5>资源描述</h5>
+                    <p>{{ currentResource.description }}</p>
+                  </div>
+                  
+                  <div v-if="currentResource.changelog && currentResource.changelog.length > 0" class="changelog-section">
+                    <h5>更新日志</h5>
+                    <ul class="changelog-list">
+                      <li v-for="(log, index) in getChangelogArray(currentResource.changelog)" :key="index" style="white-space: normal; word-break: normal;">{{ log }}</li>
+                    </ul>
+                  </div>
+                  
                   <div class="download-section">
                     <button
-                      class="download-btn"
-                      @click="handleDownload(kernel.downloadUrl, kernel.id)"
+                      class="download-btn primary"
+                      @click="handleDownload(currentResource.downloadUrl, currentResource.id)"
                     >
-                      下载内核
+                      立即下载
                     </button>
-                    <span class="download-count">{{ getDownloadCount(kernel.id) }} 次下载</span>
+                    <span class="download-count">{{ getDownloadCount(currentResource.id) }} 次下载</span>
                   </div>
                 </div>
               </div>
+              <div v-else class="no-resource">
+                <p>资源未找到</p>
+              </div>
             </div>
-
-            <!-- Recovery资源 -->
-            <div class="resource-section">
-              <h3 class="section-title">橙狐Recovery</h3>
-              <div class="resource-list">
-                <div v-for="recovery in device?.recoveries" :key="recovery.id" class="resource-item">
-                  <div class="resource-info">
-                    <h4 class="resource-name">{{ recovery.name }} {{ recovery.version }}</h4>
-                    <p class="resource-meta">
-                      <span class="resource-date">{{ recovery.date }}</span>
-                      <span class="resource-size">{{ recovery.size }}</span>
-                    </p>
-                    <p class="resource-description">{{ recovery.description }}</p>
-                    <div class="changelog" v-if="recovery.changelog && recovery.changelog.length > 0">
-                      <h5 class="changelog-title">更新日志：</h5>
-                      <ul class="changelog-list">
-                        <li v-for="(log, index) in recovery.changelog" :key="index">{{ log }}</li>
-                      </ul>
+            
+            <!-- 设备详情页面（显示所有资源） -->
+            <div v-else>
+              <!-- 内核资源 -->
+              <div class="resource-section">
+                <h3 class="section-title">内核文件</h3>
+                <div class="resource-list">
+                  <div v-for="kernel in device?.kernels" :key="kernel.id" class="resource-item">
+                    <div class="resource-info">
+                      <h4 class="resource-name">{{ kernel.version }}</h4>
+                      <p class="resource-meta">
+                        <span class="resource-date">{{ kernel.date }}</span>
+                        <span class="resource-size">{{ kernel.size }}{{ kernel.sizeUnit || 'MB' }}</span>
+                      </p>
+                      <p class="resource-description">{{ kernel.description }}</p>
+                      <div class="changelog" v-if="kernel.changelog">
+                        <h5 class="changelog-title">更新日志：</h5>
+                        <ul class="changelog-list">
+                          <li v-for="(log, index) in getChangelogArray(kernel.changelog)" :key="index">{{ log }}</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="download-section">
+                      <button
+                        class="download-btn"
+                        @click="handleDownload(kernel.downloadUrl, kernel.id)"
+                      >
+                        下载内核
+                      </button>
+                      <span class="download-count">{{ getDownloadCount(kernel.id) }} 次下载</span>
                     </div>
                   </div>
-                  <div class="download-section">
-                    <button
-                      class="download-btn"
-                      @click="handleDownload(recovery.downloadUrl, recovery.id)"
-                    >
-                      下载Recovery
-                    </button>
-                    <span class="download-count">{{ getDownloadCount(recovery.id) }} 次下载</span>
+                </div>
+              </div>
+
+              <!-- Recovery资源 -->
+              <div class="resource-section">
+                <h3 class="section-title">橙狐Recovery</h3>
+                <div class="resource-list">
+                  <div v-for="recovery in device?.recoveries" :key="recovery.id" class="resource-item">
+                    <div class="resource-info">
+                      <h4 class="resource-name">{{ recovery.name }} {{ recovery.version }}</h4>
+                      <p class="resource-meta">
+                        <span class="resource-date">{{ recovery.date }}</span>
+                        <span class="resource-size">{{ recovery.size }}{{ recovery.sizeUnit || 'MB' }}</span>
+                      </p>
+                      <p class="resource-description">{{ recovery.description }}</p>
+                      <div class="changelog" v-if="recovery.changelog">
+                        <h5 class="changelog-title">更新日志：</h5>
+                        <ul class="changelog-list">
+                          <li v-for="(log, index) in getChangelogArray(recovery.changelog)" :key="index">{{ log }}</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="download-section">
+                      <button
+                        class="download-btn"
+                        @click="handleDownload(recovery.downloadUrl, recovery.id)"
+                      >
+                        下载Recovery
+                      </button>
+                      <span class="download-count">{{ getDownloadCount(recovery.id) }} 次下载</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -183,7 +231,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { androidAPI } from '@/services/api'
 
@@ -197,8 +245,19 @@ const tutorial = ref<any>(null)
 // 下载统计
 const downloadStats = ref<Record<string, number>>({})
 
-// 获取设备ID
-const deviceId = computed(() => route.params.id as string)
+// 当前显示的资源
+const currentResource = ref<any>(null)
+const resourceType = ref<string>('')
+
+// 获取路由参数
+const deviceId = computed(() => route.params.id as string || route.params.deviceId as string)
+const routeResourceType = computed(() => route.params.resourceType as string)
+const routeResourceId = computed(() => route.params.resourceId as string)
+
+// 判断是否为资源详情页面
+const isResourceDetailPage = computed(() => {
+  return routeResourceType.value && routeResourceId.value
+})
 
 // 获取分区类型
 const getPartitionType = () => {
@@ -223,8 +282,22 @@ const handleImageError = (event: Event) => {
 }
 
 // 获取下载次数
-const getDownloadCount = (fileId: string) => {
-  return downloadStats.value[fileId] || 0
+const getDownloadCount = (resourceId: string) => {
+  return downloadStats.value[resourceId] || 0
+}
+
+// 处理changelog数据，支持数组和字符串格式
+const getChangelogArray = (changelog: any) => {
+  if (Array.isArray(changelog)) {
+    return changelog
+  }
+  
+  if (typeof changelog === 'string') {
+    // 如果是字符串，尝试按换行符分割
+    return changelog.split('\n').filter(item => item.trim() !== '')
+  }
+  
+  return []
 }
 
 // 处理下载
@@ -285,6 +358,22 @@ const loadDeviceData = async () => {
   }
 }
 
+// 监听路由参数变化，设置当前资源
+watch([routeResourceType, routeResourceId, device], ([type, id, deviceData]) => {
+  if (type && id && deviceData) {
+    resourceType.value = type
+    
+    // 根据资源类型查找对应的资源
+    if (type === 'kernel') {
+      currentResource.value = deviceData.kernels?.find((k: any) => k.id === id)
+    } else if (type === 'recovery') {
+      currentResource.value = deviceData.recoveries?.find((r: any) => r.id === id)
+    }
+  } else {
+    currentResource.value = null
+  }
+}, { immediate: true })
+
 // 组件挂载时加载数据
 onMounted(async () => {
   await loadDeviceData()
@@ -315,19 +404,22 @@ onMounted(async () => {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  background: none;
-  border: 1px solid var(--border-color);
+  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
   padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--border-radius-md);
-  color: var(--text-secondary);
+  border-radius: var(--border-radius-lg);
+  color: white;
   cursor: pointer;
   transition: all var(--transition-fast);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-sm);
 }
 
 .back-btn:hover {
-  background: var(--background-secondary);
-  border-color: var(--primary-color);
-  color: var(--primary-color);
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .page-title {
@@ -469,35 +561,76 @@ onMounted(async () => {
   box-shadow: var(--shadow-sm);
 }
 
-.resource-info {
-  flex: 1;
+.resource-detail-section {
+  width: 100%;
+}
+
+.resource-detail {
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.resource-detail-content {
+  max-width: 800px;
+}
+
+.resource-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .resource-name {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-xs);
   color: var(--text-primary);
+  margin: 0;
 }
 
 .resource-meta {
   display: flex;
   gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xs);
   font-size: var(--font-size-sm);
   color: var(--text-tertiary);
 }
 
 .resource-description {
-  color: var(--text-secondary);
+  margin: var(--spacing-xl) 0;
+}
+
+.resource-description h5 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+}
+
+.resource-description p {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.changelog-section {
+  margin: var(--spacing-xl) 0;
+}
+
+.changelog-section h5 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
 }
 
 .changelog {
-  background: var(--background-tertiary);
-  padding: var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
-  margin-top: var(--spacing-sm);
+  margin-top: var(--spacing-md);
 }
 
 .changelog-title {
@@ -537,14 +670,55 @@ onMounted(async () => {
   transition: all var(--transition-fast);
 }
 
+.download-btn.primary {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-md);
+  background: linear-gradient(135deg, var(--success-color), var(--success-dark));
+}
+
 .download-btn:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
 
+.download-btn.primary:hover {
+  background: linear-gradient(135deg, var(--success-dark), var(--success-darker));
+}
+
 .download-count {
   font-size: var(--font-size-xs);
   color: var(--text-tertiary);
+}
+
+.no-resource {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+}
+
+.resource-info {
+  flex: 1;
+}
+
+.resource-info .resource-name {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+}
+
+.resource-info .resource-meta {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+.resource-info .resource-description {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
 }
 
 /* 教程区域 */
