@@ -16,7 +16,6 @@
             v-for="device in devices"
             :key="device.id"
             class="device-card"
-            @click="selectDevice(device)"
           >
             <!-- 设备图片 -->
             <div class="device-image-container">
@@ -54,7 +53,7 @@
                 v-for="kernel in device.kernels"
                 :key="kernel.id"
                 class="resource-btn kernel-btn"
-                @click.stop="handleDownload(kernel.downloadUrl, kernel.id)"
+                @click="goToResourceDetail(device.id, 'kernel', kernel.id)"
               >
                 内核 {{ kernel.version }}
               </button>
@@ -62,7 +61,7 @@
                 v-for="recovery in device.recoveries"
                 :key="recovery.id"
                 class="resource-btn recovery-btn"
-                @click.stop="handleDownload(recovery.downloadUrl, recovery.id)"
+                @click="goToResourceDetail(device.id, 'recovery', recovery.id)"
               >
                 橙狐 {{ recovery.version }}
               </button>
@@ -71,101 +70,15 @@
         </div>
       </div>
     </section>
-
-    <!-- 设备详情模态框 -->
-    <div v-if="selectedDevice" class="modal-overlay" @click="closeModal">
-      <div class="modal-content" @click.stop>
-        <div class="modal-header">
-          <h3 class="modal-title">{{ selectedDevice.name }}</h3>
-          <button class="modal-close" @click="closeModal">
-            <FontAwesomeIcon icon="times" />
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <!-- 内核文件下载 -->
-          <div class="download-section">
-            <h4 class="section-subtitle">内核文件</h4>
-            <div class="download-list">
-              <div v-for="kernel in selectedDevice.kernels" :key="kernel.id" class="download-item">
-                <div class="file-info">
-                  <h5 class="file-name">{{ kernel.version }}</h5>
-                  <p class="file-details">
-                    <span class="file-date">{{ kernel.date }}</span>
-                    <span class="file-size">{{ kernel.size }}</span>
-                  </p>
-                  <p class="file-description">{{ kernel.description }}</p>
-                </div>
-                <div class="download-actions">
-                  <button
-                    class="btn btn-primary"
-                    @click="handleDownload(kernel.id, kernel.downloadUrl)"
-                  >
-                    下载
-                  </button>
-                  <span class="download-count"> {{ getDownloadCount(kernel.id) }} 次下载 </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Recovery下载 -->
-          <div class="download-section">
-            <h4 class="section-subtitle">橙狐Recovery</h4>
-            <div class="download-list">
-              <div
-                v-for="recovery in selectedDevice.recoveries"
-                :key="recovery.id"
-                class="download-item"
-              >
-                <div class="file-info">
-                  <h5 class="file-name">{{ recovery.name }} {{ recovery.version }}</h5>
-                  <p class="file-details">
-                    <span class="file-date">{{ recovery.date }}</span>
-                    <span class="file-size">{{ recovery.size }}</span>
-                  </p>
-                  <p class="file-description">{{ recovery.description }}</p>
-                  <div class="changelog">
-                    <strong>更新日志：</strong>
-                    <span>{{ recovery.changelog }}</span>
-                  </div>
-                </div>
-                <div class="download-actions">
-                  <button
-                    class="btn btn-primary"
-                    @click="handleDownload(recovery.id, recovery.downloadUrl)"
-                  >
-                    下载
-                  </button>
-                  <span class="download-count"> {{ getDownloadCount(recovery.id) }} 次下载 </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 刷机教程入口 -->
-          <div class="tutorial-section">
-            <h4 class="section-subtitle">刷机教程</h4>
-            <div class="tutorial-links">
-              <a
-                v-for="tutorial in selectedDevice.tutorials"
-                :key="tutorial.title"
-                :href="tutorial.url"
-                class="tutorial-link"
-              >
-                {{ tutorial.title }}
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { androidAPI } from '@/services/api'
+
+const router = useRouter()
 
 // 设备数据（从后端API动态获取）
 const devices = ref<any[]>([])
@@ -203,8 +116,6 @@ const loadDevices = async () => {
 // 下载统计
 const downloadStats = ref<Record<string, number>>({})
 
-const selectedDevice = ref<any>(null)
-
 // 计算属性
 const totalDownloads = computed(() => {
   return Object.values(downloadStats.value).reduce((sum, count) => sum + count, 0)
@@ -221,42 +132,9 @@ const getDownloadCount = (fileId: string) => {
   return downloadStats.value[fileId] || 0
 }
 
-// 处理下载
-const handleDownload = async (downloadUrl: string, fileId: string) => {
-  try {
-    // 记录下载统计
-    await androidAPI.recordDownload(fileId)
-
-    // 更新本地下载统计
-    downloadStats.value[fileId] = (downloadStats.value[fileId] || 0) + 1
-
-    // 创建下载链接
-    const link = document.createElement('a')
-    link.href = downloadUrl
-    link.download = downloadUrl.split('/').pop() || 'download'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  } catch (error) {
-    console.error('下载失败:', error)
-    // 如果API调用失败，只更新本地统计
-    downloadStats.value[fileId] = (downloadStats.value[fileId] || 0) + 1
-  }
-}
-
-// 选择设备
-const selectDevice = (device: any) => {
-  selectedDevice.value = device
-}
-
-// 打开设备详情
-const openDeviceDetail = (device: any) => {
-  selectedDevice.value = device
-}
-
-// 关闭模态框
-const closeModal = () => {
-  selectedDevice.value = null
+// 跳转到资源详情页面
+const goToResourceDetail = (deviceId: string, resourceType: string, resourceId: string) => {
+  router.push(`/android/${deviceId}`)
 }
 
 // 获取设备图片路径
@@ -507,174 +385,7 @@ onMounted(async () => {
   box-shadow: 0 4px 16px rgba(255, 215, 0, 0.5);
 }
 
-/* 模态框样式 */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: var(--spacing-lg);
-}
-
-.modal-content {
-  background: var(--background-primary);
-  border-radius: 12px;
-  max-width: 800px;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.modal-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0;
-}
-
-.modal-close {
-  background: none;
-  border: none;
-  font-size: 20px;
-  color: #666;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.modal-close:hover {
-  background: #f5f5f5;
-  color: #333;
-}
-
-.modal-body {
-  padding: 24px;
-}
-
-/* 下载区域样式 */
-.download-section {
-  margin-bottom: var(--spacing-xl);
-}
-
-.section-subtitle {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-lg);
-  color: var(--text-primary);
-  padding-left: var(--spacing-sm);
-  border-left: 4px solid var(--primary-color);
-}
-
-.download-list {
-  display: grid;
-  gap: var(--spacing-md);
-}
-
-.download-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing-lg);
-  background: var(--background-secondary);
-  border-radius: var(--border-radius-md);
-  border: 1px solid var(--border-color);
-  transition: all var(--transition-fast);
-}
-
-.download-item:hover {
-  border-color: var(--primary-color);
-  box-shadow: var(--shadow-sm);
-}
-
-.file-info {
-  flex: 1;
-}
-
-.file-name {
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-xs);
-  color: var(--text-primary);
-}
-
-.file-details {
-  display: flex;
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xs);
-  font-size: var(--font-size-sm);
-  color: var(--text-tertiary);
-}
-
-.file-description {
-  color: var(--text-secondary);
-  margin-bottom: var(--spacing-xs);
-}
-
-.changelog {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  background: var(--background-tertiary);
-  padding: var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
-  margin-top: var(--spacing-sm);
-}
-
-.download-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-sm);
-  min-width: 120px;
-}
-
-.download-count {
-  font-size: var(--font-size-xs);
-  color: var(--text-tertiary);
-}
-
-/* 教程区域 */
-.tutorial-section {
-  margin-top: var(--spacing-xl);
-}
-
-.tutorial-links {
-  display: flex;
-  gap: var(--spacing-md);
-  flex-wrap: wrap;
-}
-
-.tutorial-link {
-  display: inline-block;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background: var(--primary-color);
-  color: white;
-  text-decoration: none;
-  border-radius: var(--border-radius-md);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  transition: all var(--transition-fast);
-}
-
-.tutorial-link:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
-}
+/* 响应式设计 */
 
 /* 统计区域 */
 .stats-section {

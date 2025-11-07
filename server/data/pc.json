@@ -4,139 +4,155 @@
       "id": "budget-3000",
       "name": "3000元入门配置",
       "price": 2999,
+      "currency": "CNY",
       "category": "入门级",
       "performance": 65,
       "description": "适合日常办公、学习使用的经济型配置",
+      "usage": ["办公", "学习", "网页浏览"],
       "components": [
-        {"name": "CPU", "model": "Intel i3-12100F", "price": 699},
-        {"name": "主板", "model": "H610M", "price": 499},
-        {"name": "内存", "model": "16GB DDR4 3200MHz", "price": 299},
-        {"name": "显卡", "model": "集成显卡", "price": 0},
-        {"name": "硬盘", "model": "512GB NVMe SSD", "price": 299},
-        {"name": "电源", "model": "500W 80Plus", "price": 249},
-        {"name": "机箱", "model": "MATX机箱", "price": 199},
-        {"name": "显示器", "model": "23.8英寸 1080P", "price": 599}
+        {"type": "CPU", "brand": "Intel", "model": "i3-12100F", "specs": "4核8线程", "price": 699},
+        {"type": "主板", "brand": "Intel", "model": "H610M", "specs": "MATX", "price": 499},
+        {"type": "内存", "brand": "DDR4", "model": "16GB 3200MHz", "specs": "双通道", "price": 299},
+        {"type": "显卡", "brand": "集成显卡", "model": "Intel UHD Graphics", "specs": "", "price": 0},
+        {"type": "硬盘", "brand": "NVMe", "model": "512GB SSD", "specs": "PCIe 3.0", "price": 299},
+        {"type": "电源", "brand": "500W", "model": "80Plus", "specs": "标准", "price": 249},
+        {"type": "机箱", "brand": "MATX", "model": "标准机箱", "specs": "", "price": 199},
+        {"type": "显示器", "brand": "23.8英寸", "model": "1080P", "specs": "IPS", "price": 599}
       ]
     },
     {
       "id": "mid-5000",
       "name": "5000元主流配置",
       "price": 4999,
+      "currency": "CNY",
       "category": "主流级",
       "performance": 78,
       "description": "平衡性能与价格，适合游戏和创作",
+      "usage": ["游戏", "创作", "娱乐"],
       "components": [
-        {"name": "CPU", "model": "AMD Ryzen 5 5600X", "price": 1199},
-        {"name": "主板", "model": "B550M", "price": 699},
-        {"name": "内存", "model": "16GB DDR4 3600MHz", "price": 399},
-        {"name": "显卡", "model": "NVIDIA RTX 3060 12GB", "price": 2299},
-        {"name": "硬盘", "model": "1TB NVMe SSD", "price": 499},
-        {"name": "电源", "model": "650W 80Plus Bronze", "price": 399},
-        {"name": "机箱", "model": "ATX中塔机箱", "price": 299},
-        {"name": "显示器", "model": "27英寸 2K IPS", "price": 1299}
+        {"type": "CPU", "brand": "AMD", "model": "Ryzen 5 5600X", "specs": "6核12线程", "price": 1199},
+        {"type": "主板", "brand": "AMD", "model": "B550M", "specs": "MATX", "price": 699},
+        {"type": "内存", "brand": "DDR4", "model": "16GB 3600MHz", "specs": "双通道", "price": 399},
+        {"type": "显卡", "brand": "NVIDIA", "model": "RTX 3060 12GB", "specs": "GDDR6", "price": 2299},
+        {"type": "硬盘", "brand": "NVMe", "model": "1TB SSD", "specs": "PCIe 3.0", "price": 499},
+        {"type": "电源", "brand": "650W", "model": "80Plus Bronze", "specs": "铜牌认证", "price": 399},
+        {"type": "机箱", "brand": "ATX", "model": "中塔机箱", "specs": "", "price": 299},
+        {"type": "显示器", "brand": "27英寸", "model": "2K IPS", "specs": "", "price": 1299}
       ]
     },
     {
       "id": "high-8000",
       "name": "8000元高性能配置",
       "price": 7999,
+      "currency": "CNY",
       "category": "高性能",
       "performance": 85,
       "description": "畅玩3A大作，满足专业创作需求",
+      "usage": ["3A游戏", "专业创作", "视频剪辑"],
       "components": [
-        {"name": "CPU", "model": "Intel i5-13600KF", "price": 1999},
-        {"name": "主板", "model": "B760M", "price": 999},
-        {"name": "内存", "model": "32GB DDR5 5600MHz", "price": 899},
-        {"name": "显卡", "model": "NVIDIA RTX 4060 Ti 8GB", "price": 3299},
-        {"name": "硬盘", "model": "1TB NVMe PCIe 4.0 SSD", "price": 599},
-        {"name": "电源", "model": "750W 80Plus Gold", "price": 599},
-        {"name": "机箱", "model": "ATX电竞机箱", "price": 399},
-        {"name": "显示器", "model": "27英寸 2K 165Hz", "price": 1499}
+        {"type": "CPU", "brand": "Intel", "model": "i5-13600KF", "specs": "14核20线程", "price": 1999},
+        {"type": "主板", "brand": "Intel", "model": "B760M", "specs": "MATX", "price": 999},
+        {"type": "内存", "brand": "DDR5", "model": "32GB 5600MHz", "specs": "双通道", "price": 899},
+        {"type": "显卡", "brand": "NVIDIA", "model": "RTX 4060 Ti 8GB", "specs": "GDDR6", "price": 3299},
+        {"type": "硬盘", "brand": "NVMe", "model": "1TB PCIe 4.0 SSD", "specs": "PCIe 4.0", "price": 599},
+        {"type": "电源", "brand": "750W", "model": "80Plus Gold", "specs": "金牌认证", "price": 599},
+        {"type": "机箱", "brand": "ATX", "model": "电竞机箱", "specs": "", "price": 399},
+        {"type": "显示器", "brand": "27英寸", "model": "2K 165Hz", "specs": "IPS", "price": 1499}
       ]
     },
     {
       "id": "enthusiast-12000",
       "name": "12000元发烧配置",
       "price": 11999,
+      "currency": "CNY",
       "category": "发烧级",
       "performance": 92,
       "description": "顶级性能，满足4K游戏和专业工作",
+      "usage": ["4K游戏", "专业工作", "3D渲染"],
       "components": [
-        {"name": "CPU", "model": "AMD Ryzen 7 7800X3D", "price": 2999},
-        {"name": "主板", "model": "X670E", "price": 1999},
-        {"name": "内存", "model": "32GB DDR5 6000MHz", "price": 1199},
-        {"name": "显卡", "model": "NVIDIA RTX 4070 12GB", "price": 4499},
-        {"name": "硬盘", "model": "2TB NVMe PCIe 4.0 SSD", "price": 999},
-        {"name": "电源", "model": "850W 80Plus Platinum", "price": 899},
-        {"name": "机箱", "model": "全塔机箱", "price": 699},
-        {"name": "显示器", "model": "32英寸 4K 144Hz", "price": 2999}
+        {"type": "CPU", "brand": "AMD", "model": "Ryzen 7 7800X3D", "specs": "8核16线程", "price": 2999},
+        {"type": "主板", "brand": "AMD", "model": "X670E", "specs": "ATX", "price": 1999},
+        {"type": "内存", "brand": "DDR5", "model": "32GB 6000MHz", "specs": "双通道", "price": 1199},
+        {"type": "显卡", "brand": "NVIDIA", "model": "RTX 4070 12GB", "specs": "GDDR6X", "price": 4499},
+        {"type": "硬盘", "brand": "NVMe", "model": "2TB PCIe 4.0 SSD", "specs": "PCIe 4.0", "price": 999},
+        {"type": "电源", "brand": "850W", "model": "80Plus Platinum", "specs": "白金认证", "price": 899},
+        {"type": "机箱", "brand": "全塔", "model": "标准机箱", "specs": "", "price": 699},
+        {"type": "显示器", "brand": "32英寸", "model": "4K 144Hz", "specs": "IPS", "price": 2999}
       ]
     },
     {
       "id": "workstation-20000",
       "name": "20000元工作站配置",
       "price": 19999,
+      "currency": "CNY",
       "category": "工作站",
       "performance": 96,
       "description": "专业级配置，适合视频剪辑、3D渲染",
+      "usage": ["视频剪辑", "3D渲染", "专业工作站"],
       "components": [
-        {"name": "CPU", "model": "Intel i9-14900K", "price": 4499},
-        {"name": "主板", "model": "Z790", "price": 2499},
-        {"name": "内存", "model": "64GB DDR5 6400MHz", "price": 2199},
-        {"name": "显卡", "model": "NVIDIA RTX 4080 16GB", "price": 8499},
-        {"name": "硬盘", "model": "2TB NVMe PCIe 5.0 SSD", "price": 1499},
-        {"name": "电源", "model": "1000W 80Plus Titanium", "price": 1499},
-        {"name": "机箱", "model": "全塔静音机箱", "price": 999},
-        {"name": "显示器", "model": "34英寸 5K2K曲面", "price": 3999}
+        {"type": "CPU", "brand": "Intel", "model": "i9-14900K", "specs": "24核32线程", "price": 4499},
+        {"type": "主板", "brand": "Intel", "model": "Z790", "specs": "ATX", "price": 2499},
+        {"type": "内存", "brand": "DDR5", "model": "64GB 6400MHz", "specs": "四通道", "price": 2199},
+        {"type": "显卡", "brand": "NVIDIA", "model": "RTX 4080 16GB", "specs": "GDDR6X", "price": 8499},
+        {"type": "硬盘", "brand": "NVMe", "model": "2TB PCIe 5.0 SSD", "specs": "PCIe 5.0", "price": 1499},
+        {"type": "电源", "brand": "1000W", "model": "80Plus Titanium", "specs": "钛金认证", "price": 1499},
+        {"type": "机箱", "brand": "全塔", "model": "静音机箱", "specs": "", "price": 999},
+        {"type": "显示器", "brand": "34英寸", "model": "5K2K曲面", "specs": "超宽屏", "price": 3999}
       ]
     },
     {
       "id": "ultimate-30000",
       "name": "30000元终极配置",
       "price": 29999,
+      "currency": "CNY",
       "category": "终极",
       "performance": 99,
       "description": "无与伦比的性能，顶级游戏和创作体验",
+      "usage": ["顶级游戏", "专业创作", "极致体验"],
       "components": [
-        {"name": "CPU", "model": "AMD Ryzen 9 7950X3D", "price": 5999},
-        {"name": "主板", "model": "X670E Extreme", "price": 3999},
-        {"name": "内存", "model": "128GB DDR5 6000MHz", "price": 3999},
-        {"name": "显卡", "model": "NVIDIA RTX 4090 24GB", "price": 12999},
-        {"name": "硬盘", "model": "4TB NVMe PCIe 5.0 SSD", "price": 2999},
-        {"name": "电源", "model": "1200W 80Plus Titanium", "price": 1999},
-        {"name": "机箱", "model": "全塔定制机箱", "price": 1999},
-        {"name": "显示器", "model": "49英寸 5K超宽曲面", "price": 6999}
+        {"type": "CPU", "brand": "AMD", "model": "Ryzen 9 7950X3D", "specs": "16核32线程", "price": 5999},
+        {"type": "主板", "brand": "AMD", "model": "X670E Extreme", "specs": "E-ATX", "price": 3999},
+        {"type": "内存", "brand": "DDR5", "model": "128GB 6000MHz", "specs": "四通道", "price": 3999},
+        {"type": "显卡", "brand": "NVIDIA", "model": "RTX 4090 24GB", "specs": "GDDR6X", "price": 12999},
+        {"type": "硬盘", "brand": "NVMe", "model": "4TB PCIe 5.0 SSD", "specs": "PCIe 5.0", "price": 2999},
+        {"type": "电源", "brand": "1200W", "model": "80Plus Titanium", "specs": "钛金认证", "price": 1999},
+        {"type": "机箱", "brand": "全塔", "model": "定制机箱", "specs": "", "price": 1999},
+        {"type": "显示器", "brand": "49英寸", "model": "5K超宽曲面", "specs": "超宽屏", "price": 6999}
       ]
     }
   ],
   "rankings": {
-    "intel-cpu": [
-      {"model": "Intel i9-14900K", "score": 98, "price": 4499, "recommendation": 9},
-      {"model": "Intel i7-14700K", "score": 95, "price": 3499, "recommendation": 8},
-      {"model": "Intel i5-14600K", "score": 88, "price": 2499, "recommendation": 9},
-      {"model": "Intel i3-14100", "score": 75, "price": 1299, "recommendation": 7},
-      {"model": "Intel Core i9-13900K", "score": 96, "price": 3999, "recommendation": 8}
-    ],
-    "amd-cpu": [
-      {"model": "AMD Ryzen 9 7950X3D", "score": 97, "price": 5999, "recommendation": 9},
-      {"model": "AMD Ryzen 7 7800X3D", "score": 95, "price": 2999, "recommendation": 10},
-      {"model": "AMD Ryzen 5 7600X", "score": 85, "price": 1999, "recommendation": 8},
-      {"model": "AMD Ryzen 9 7900X", "score": 92, "price": 3999, "recommendation": 7},
-      {"model": "AMD Ryzen 5 5600X", "score": 80, "price": 1199, "recommendation": 9}
-    ],
-    "nvidia-gpu": [
-      {"model": "NVIDIA RTX 4090", "score": 100, "price": 12999, "recommendation": 8},
-      {"model": "NVIDIA RTX 4080", "score": 95, "price": 8499, "recommendation": 7},
-      {"model": "NVIDIA RTX 4070 Ti", "score": 90, "price": 5999, "recommendation": 8},
-      {"model": "NVIDIA RTX 4060 Ti", "score": 85, "price": 3299, "recommendation": 9},
-      {"model": "NVIDIA RTX 4060", "score": 80, "price": 2499, "recommendation": 9}
-    ],
-    "amd-gpu": [
-      {"model": "AMD RX 7900 XTX", "score": 96, "price": 7999, "recommendation": 9},
-      {"model": "AMD RX 7900 XT", "score": 92, "price": 5999, "recommendation": 8},
-      {"model": "AMD RX 7800 XT", "score": 88, "price": 3999, "recommendation": 9},
-      {"model": "AMD RX 7700 XT", "score": 82, "price": 3499, "recommendation": 7},
-      {"model": "AMD RX 7600", "score": 75, "price": 2299, "recommendation": 8}
-    ]
+    "cpu": {
+      "intel": [
+        {"id": "cpu-1", "model": "Intel i9-14900K", "score": 98, "price": 4499, "recommendation": 9, "specs": "24核32线程"},
+        {"id": "cpu-2", "model": "Intel i7-14700K", "score": 95, "price": 3499, "recommendation": 8, "specs": "20核28线程"},
+        {"id": "cpu-3", "model": "Intel i5-14600K", "score": 88, "price": 2499, "recommendation": 9, "specs": "14核20线程"},
+        {"id": "cpu-4", "model": "Intel i3-14100", "score": 75, "price": 1299, "recommendation": 7, "specs": "4核8线程"},
+        {"id": "cpu-5", "model": "Intel Core i9-13900K", "score": 96, "price": 3999, "recommendation": 8, "specs": "24核32线程"}
+      ],
+      "amd": [
+        {"id": "cpu-6", "model": "AMD Ryzen 9 7950X3D", "score": 97, "price": 5999, "recommendation": 9, "specs": "16核32线程"},
+        {"id": "cpu-7", "model": "AMD Ryzen 7 7800X3D", "score": 95, "price": 2999, "recommendation": 10, "specs": "8核16线程"},
+        {"id": "cpu-8", "model": "AMD Ryzen 5 7600X", "score": 85, "price": 1999, "recommendation": 8, "specs": "6核12线程"},
+        {"id": "cpu-9", "model": "AMD Ryzen 9 7900X", "score": 92, "price": 3999, "recommendation": 7, "specs": "12核24线程"},
+        {"id": "cpu-10", "model": "AMD Ryzen 5 5600X", "score": 80, "price": 1199, "recommendation": 9, "specs": "6核12线程"}
+      ]
+    },
+    "gpu": {
+      "nvidia": [
+        {"id": "gpu-1", "model": "NVIDIA RTX 4090", "score": 100, "price": 12999, "recommendation": 8, "specs": "24GB GDDR6X"},
+        {"id": "gpu-2", "model": "NVIDIA RTX 4080", "score": 95, "price": 8499, "recommendation": 7, "specs": "16GB GDDR6X"},
+        {"id": "gpu-3", "model": "NVIDIA RTX 4070 Ti", "score": 90, "price": 5999, "recommendation": 8, "specs": "12GB GDDR6X"},
+        {"id": "gpu-4", "model": "NVIDIA RTX 4060 Ti", "score": 85, "price": 3299, "recommendation": 9, "specs": "8GB GDDR6"},
+        {"id": "gpu-5", "model": "NVIDIA RTX 4060", "score": 80, "price": 2499, "recommendation": 9, "specs": "8GB GDDR6"}
+      ],
+      "amd": [
+        {"id": "gpu-6", "model": "AMD RX 7900 XTX", "score": 96, "price": 7999, "recommendation": 9, "specs": "24GB GDDR6"},
+        {"id": "gpu-7", "model": "AMD RX 7900 XT", "score": 92, "price": 5999, "recommendation": 8, "specs": "20GB GDDR6"},
+        {"id": "gpu-8", "model": "AMD RX 7800 XT", "score": 88, "price": 3999, "recommendation": 9, "specs": "16GB GDDR6"},
+        {"id": "gpu-9", "model": "AMD RX 7700 XT", "score": 82, "price": 3499, "recommendation": 7, "specs": "12GB GDDR6"},
+        {"id": "gpu-10", "model": "AMD RX 7600", "score": 75, "price": 2299, "recommendation": 8, "specs": "8GB GDDR6"}
+      ]
+    }
   }
 }

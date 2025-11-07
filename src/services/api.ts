@@ -65,7 +65,10 @@ export const androidAPI = {
   getDownloadStats: () => api.get('/download-stats'),
   
   // 获取安卓数据
-  getAndroidData: () => api.get('/android')
+  getAndroidData: () => api.get('/android'),
+  
+  // 获取教程数据
+  getTutorials: () => api.get('/tutorials')
 }
 
 // 电脑装机相关API

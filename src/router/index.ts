@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // 导入页面组件
 const HomePage = () => import('@/views/HomePage.vue')
 const AndroidDevices = () => import('@/views/AndroidDevices.vue')
+const AndroidDeviceDetail = () => import('@/views/AndroidDeviceDetail.vue')
 const PCBuild = () => import('@/views/PCBuild.vue')
 const MusicPlayer = () => import('@/views/MusicPlayer.vue')
 const ToolBox = () => import('@/views/ToolBox.vue')
@@ -24,6 +25,14 @@ const router = createRouter({
       component: AndroidDevices,
       meta: {
         title: '安卓刷机 - Avider.top'
+      }
+    },
+    {
+      path: '/android/:id',
+      name: 'AndroidDeviceDetail',
+      component: AndroidDeviceDetail,
+      meta: {
+        title: '设备详情 - Avider.top'
       }
     },
     {

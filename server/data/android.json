@@ -2,27 +2,44 @@
   "devices": [
     {
       "id": "marble",
-      "name": "REDMI Note 12 Turbo",
+      "name": "Redmi Note 12 Turbo",
+      "codename": "marble",
+      "brand": "Redmi",
+      "model": "Note 12 Turbo",
       "image": "/images/android/devices/marble.png",
       "description": "高性能中端手机，搭载骁龙7+ Gen2处理器",
+      "processor": "骁龙7+ Gen2",
+      "category": "中端手机",
       "kernels": [
         {
           "id": "kernel-1",
-          "version": "v1.0.0",
+          "name": "稳定版内核",
+          "version": "1.0.0",
           "date": "2024-01-15",
-          "size": "15.2MB",
-          "description": "稳定版内核，优化电池续航",
+          "size": "15.2",
+          "sizeUnit": "MB",
+          "description": "优化电池续航，提升系统稳定性",
           "downloadUrl": "/downloads/kernels/redmi-note12-turbo-v1.0.0.zip",
-          "changelog": "首次发布，基础功能稳定"
+          "changelog": [
+            "首次发布",
+            "基础功能稳定",
+            "优化电池管理"
+          ]
         },
         {
           "id": "kernel-2",
-          "version": "v1.1.0",
+          "name": "性能优化版",
+          "version": "1.1.0",
           "date": "2024-02-20",
-          "size": "16.8MB",
-          "description": "性能优化版，提升游戏体验",
+          "size": "16.8",
+          "sizeUnit": "MB",
+          "description": "提升游戏体验，优化GPU性能",
           "downloadUrl": "/downloads/kernels/redmi-note12-turbo-v1.1.0.zip",
-          "changelog": "优化GPU性能，修复已知问题"
+          "changelog": [
+            "优化GPU性能",
+            "修复已知问题",
+            "提升系统响应速度"
+          ]
         }
       ],
       "recoveries": [
@@ -31,37 +48,62 @@
           "name": "OrangeFox Recovery Unofficial",
           "version": "R11.3-2511036",
           "date": "2025-11-03",
-          "size": "约30MB",
-          "description": "基于最新OrangeFox源码的自构建版本，请不要向OrangeFox提交Bug",
+          "size": "30",
+          "sizeUnit": "MB",
+          "description": "基于最新OrangeFox源码的自构建版本",
+          "note": "请不要向OrangeFox官方提交Bug",
           "downloadUrl": "https://olist.avider.top/d/%E9%AB%98%E9%80%9F/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo%20(marble)/Recovery/OrangeFox-R11.3-Unofficial-marble-2511036.zip",
-          "changelog": "1. 支持默认完整中文\n2. 移除/data检查以提高启动速度\n3. 启用nano文本编辑器\n4. 启用应用管理\n5. 支持完整KernelSU及其分支的模块管理\n6. 修复了针对HyperOS3的/data格式化\n7. 内置了最新的MagiskAlpha-30400"
+          "changelog": [
+            "支持默认完整中文",
+            "移除/data检查以提高启动速度",
+            "启用nano文本编辑器",
+            "启用应用管理",
+            "支持完整KernelSU及其分支的模块管理",
+            "修复了针对HyperOS3的/data格式化",
+            "内置了最新的MagiskAlpha-30400"
+          ]
         }
       ],
       "tutorials": [
         {
+          "id": "tutorial-1",
           "title": "刷机基础教程",
-          "url": "/tutorials/android-basics"
+          "url": "/tutorials/android-basics",
+          "difficulty": "初级"
         },
         {
+          "id": "tutorial-2",
           "title": "红米Note12 Turbo详细刷机指南",
-          "url": "/tutorials/redmi-note12-turbo"
+          "url": "/tutorials/redmi-note12-turbo",
+          "difficulty": "中级"
         }
       ]
     },
     {
       "id": "munch",
-      "name": "REDMI K40S",
+      "name": "Redmi K40S",
+      "codename": "munch",
+      "brand": "Redmi",
+      "model": "K40S",
       "image": "/images/android/devices/munch.png",
       "description": "性价比旗舰手机，搭载骁龙870处理器",
+      "processor": "骁龙870",
+      "category": "旗舰手机",
       "kernels": [
         {
           "id": "kernel-3",
-          "version": "v2.0.1",
+          "name": "稳定流畅版内核",
+          "version": "2.0.1",
           "date": "2024-01-08",
-          "size": "14.5MB",
-          "description": "稳定流畅版内核",
+          "size": "14.5",
+          "sizeUnit": "MB",
+          "description": "优化系统流畅度，提升用户体验",
           "downloadUrl": "/downloads/kernels/k40s-v2.0.1.zip",
-          "changelog": "优化系统流畅度，修复内存泄漏"
+          "changelog": [
+            "优化系统流畅度",
+            "修复内存泄漏问题",
+            "提升系统稳定性"
+          ]
         }
       ],
       "recoveries": [
@@ -70,33 +112,56 @@
           "name": "OrangeFox Recovery Unofficial",
           "version": "R11.3-2511036",
           "date": "2025-11-03",
-          "size": "约30MB",
-          "description": "基于最新OrangeFox源码的自构建版本，请不要向OrangeFox提交Bug",
+          "size": "30",
+          "sizeUnit": "MB",
+          "description": "基于最新OrangeFox源码的自构建版本",
+          "note": "请不要向OrangeFox官方提交Bug",
           "downloadUrl": "https://olist.avider.top/d/%E9%AB%98%E9%80%9F/%E5%88%B7%E6%9C%BA/Redmi%20K40S%20(munch)/Recovery/OrangeFox-R11.3-Unofficial-munch-2511036.zip",
-          "changelog": "1. 支持默认完整中文\n2. 移除/data检查以提高启动速度\n3. 启用nano文本编辑器\n4. 启用应用管理\n5. 支持完整KernelSU及其分支的模块管理\n6. 修复了非UTF-8编码的文件名在解密前报错的问题\n7. 内置了最新的MagiskAlpha-30400"
+          "changelog": [
+            "支持默认完整中文",
+            "移除/data检查以提高启动速度",
+            "启用nano文本编辑器",
+            "启用应用管理",
+            "支持完整KernelSU及其分支的模块管理",
+            "修复了非UTF-8编码的文件名在解密前报错的问题",
+            "内置了最新的MagiskAlpha-30400"
+          ]
         }
       ],
       "tutorials": [
         {
+          "id": "tutorial-3",
           "title": "K40S刷机完整指南",
-          "url": "/tutorials/k40s-complete"
+          "url": "/tutorials/k40s-complete",
+          "difficulty": "中级"
         }
       ]
     },
     {
       "id": "nabu",
       "name": "Xiaomi Pad 5",
+      "codename": "nabu",
+      "brand": "Xiaomi",
+      "model": "Pad 5",
       "image": "/images/android/devices/nabu.png",
       "description": "高性能平板电脑，搭载骁龙860处理器",
+      "processor": "骁龙860",
+      "category": "平板电脑",
       "kernels": [
         {
           "id": "kernel-4",
-          "version": "v1.2.0",
+          "name": "平板优化版内核",
+          "version": "1.2.0",
           "date": "2024-02-01",
-          "size": "18.2MB",
-          "description": "平板优化版内核",
+          "size": "18.2",
+          "sizeUnit": "MB",
+          "description": "优化横屏体验，提升多任务性能",
           "downloadUrl": "/downloads/kernels/mi-pad5-v1.2.0.zip",
-          "changelog": "优化横屏体验，提升多任务性能"
+          "changelog": [
+            "优化横屏体验",
+            "提升多任务性能",
+            "适配平板特殊功能"
+          ]
         }
       ],
       "recoveries": [
@@ -105,16 +170,33 @@
           "name": "OrangeFox Recovery Unofficial",
           "version": "R11.3-2511036",
           "date": "2025-11-03",
-          "size": "约31MB",
-          "description": "基于最新OrangeFox源码的自构建版本，请不要向OrangeFox提交Bug",
+          "size": "31",
+          "sizeUnit": "MB",
+          "description": "基于最新OrangeFox源码的自构建版本",
+          "note": "请不要向OrangeFox官方提交Bug",
           "downloadUrl": "https://olist.avider.top/d/%E9%AB%98%E9%80%9F/%E5%88%B7%E6%9C%BA/Xiaomi%205%20Pad%20(nabu)/Recovery/OrangeFox-R11.3-Unofficial-nabu-2511036.zip",
-          "changelog": "1. 支持默认完整中文\n2. 移除/data检查以提高启动速度\n3. 启用nano文本编辑器\n4. 启用应用管理\n5. 支持完整KernelSU及其分支的模块管理\n6. 修复了UI显示错位的问题\n7. 修复了电量显示的问题\n8. 修复了安装到boot分区的问题\n9. 修复了部分分区的挂载问题\n10. 调整了recovery.fstab的部分flags\n11. 修复了刷入当前OrangeFox的功能\n12. 内置了最新的MagiskAlpha-30400"
+          "changelog": [
+            "支持默认完整中文",
+            "移除/data检查以提高启动速度",
+            "启用nano文本编辑器",
+            "启用应用管理",
+            "支持完整KernelSU及其分支的模块管理",
+            "修复了UI显示错位的问题",
+            "修复了电量显示的问题",
+            "修复了安装到boot分区的问题",
+            "修复了部分分区的挂载问题",
+            "调整了recovery.fstab的部分flags",
+            "修复了刷入当前OrangeFox的功能",
+            "内置了最新的MagiskAlpha-30400"
+          ]
         }
       ],
       "tutorials": [
         {
+          "id": "tutorial-4",
           "title": "小米Pad5刷机教程",
-          "url": "/tutorials/mi-pad5"
+          "url": "/tutorials/mi-pad5",
+          "difficulty": "中级"
         }
       ]
     }

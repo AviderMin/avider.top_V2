@@ -1,4 +1,18 @@
 {
-  "kernel-1": 2,
-  "recovery-1": 2
+  "downloads": [
+    {
+      "id": "kernel-1",
+      "type": "kernel",
+      "count": 2,
+      "lastDownloaded": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": "recovery-1",
+      "type": "recovery",
+      "count": 2,
+      "lastDownloaded": "2024-01-01T00:00:00Z"
+    }
+  ],
+  "totalDownloads": 4,
+  "lastUpdated": "2024-01-01T00:00:00Z"
 }
