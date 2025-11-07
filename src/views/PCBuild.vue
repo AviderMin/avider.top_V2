@@ -22,7 +22,6 @@
           >
             <div class="config-header">
               <h3 class="config-name">{{ config.name }}</h3>
-              <div class="config-price">¥{{ config.price.toLocaleString() }}</div>
             </div>
 
             <div class="config-category">{{ config.category }}</div>
@@ -38,14 +37,18 @@
 
             <div class="config-components">
               <div
-                v-for="component in config.components.slice(0, 3)"
+                v-for="component in config.components"
                 :key="component.name"
                 class="component-item"
               >
-                <span class="component-name">{{ component.name }}:</span>
-                <span class="component-model">{{ component.model }}</span>
+                <div class="component-icon">
+                  <component :is="getComponentIcon(component.name)" size="16" />
+                </div>
+                <div class="component-info">
+                  <span class="component-name">{{ component.name }}</span>
+                  <span class="component-model">{{ component.model }}</span>
+                </div>
               </div>
-              <div class="more-components">+{{ config.components.length - 3 }} 更多组件</div>
             </div>
           </div>
         </div>
@@ -68,135 +71,137 @@
                   <span class="component-name">{{ component.name }}</span>
                   <span class="component-model">{{ component.model }}</span>
                 </div>
-                <div class="component-price">¥{{ component.price.toLocaleString() }}</div>
               </div>
             </div>
-
-            <div class="total-price">总价: ¥{{ getSelectedConfig()?.price.toLocaleString() }}</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 硬件排行榜区域 -->
+    <!-- 硬件性能排行榜 -->
     <section class="rankings-section">
       <div class="container">
         <h2 class="section-title">硬件性能排行榜</h2>
 
-        <div class="rankings-tabs">
-          <button
-            v-for="tab in rankingTabs"
-            :key="tab.key"
-            :class="['tab-btn', { active: activeTab === tab.key }]"
-            @click="activeTab = tab.key"
+        <div class="rankings-grid">
+          <!-- Intel CPU 排行榜卡片 -->
+          <div
+            class="ranking-card"
+            v-if="rankings['intel-cpu'] && rankings['intel-cpu'].length > 0"
           >
-            {{ tab.label }}
-          </button>
-        </div>
-
-        <div class="rankings-content">
-          <div v-for="ranking in getCurrentRankings()" :key="ranking.model" class="ranking-item">
-            <div class="ranking-info">
-              <div class="ranking-model">{{ ranking.model }}</div>
-              <div class="ranking-score">
-                <div class="score-bar">
-                  <div class="score-fill" :style="{ width: ranking.score + '%' }"></div>
-                </div>
-                <span class="score-text">{{ ranking.score }}</span>
+            <div class="ranking-header">
+              <div class="ranking-icon">
+                <CpuIcon size="24" />
               </div>
+              <h3 class="ranking-title">Intel CPU 排行榜</h3>
             </div>
 
-            <div class="ranking-details">
-              <div class="ranking-price">¥{{ ranking.price.toLocaleString() }}</div>
-              <div class="ranking-recommendation">
-                <div class="recommendation-stars">
-                  <span
-                    v-for="n in 10"
-                    :key="n"
-                    :class="['star', { active: n <= ranking.recommendation }]"
-                    >★</span
-                  >
+            <div class="ranking-content">
+              <div
+                v-for="(ranking, index) in rankings['intel-cpu']"
+                :key="ranking.model"
+                class="ranking-item"
+              >
+                <div class="ranking-rank">#{{ index + 1 }}</div>
+                <div class="ranking-info">
+                  <div class="ranking-model">{{ ranking.model }}</div>
+                  <div class="score-bar-container">
+                    <div class="score-bar">
+                      <div class="score-fill" :style="{ width: ranking.score + '%' }"></div>
+                    </div>
+                  </div>
                 </div>
-                <span class="recommendation-text">{{ ranking.recommendation }}/10</span>
+                <span class="score-value">{{ ranking.score }}</span>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- 配置对比功能 -->
-    <section class="compare-section">
-      <div class="container">
-        <h2 class="section-title">配置对比</h2>
+          <!-- AMD CPU 排行榜卡片 -->
+          <div class="ranking-card" v-if="rankings['amd-cpu'] && rankings['amd-cpu'].length > 0">
+            <div class="ranking-header">
+              <div class="ranking-icon">
+                <CpuIcon size="24" />
+              </div>
+              <h3 class="ranking-title">AMD CPU 排行榜</h3>
+            </div>
 
-        <div class="compare-controls">
-          <select v-model="compareConfig1" class="compare-select">
-            <option value="">选择第一个配置</option>
-            <option v-for="config in configurations" :key="config.id" :value="config.id">
-              {{ config.name }}
-            </option>
-          </select>
-
-          <select v-model="compareConfig2" class="compare-select">
-            <option value="">选择第二个配置</option>
-            <option v-for="config in configurations" :key="config.id" :value="config.id">
-              {{ config.name }}
-            </option>
-          </select>
-
-          <button
-            class="btn btn-primary"
-            :disabled="!compareConfig1 || !compareConfig2"
-            @click="showComparison = true"
-          >
-            开始对比
-          </button>
-        </div>
-
-        <!-- 对比结果面板 -->
-        <div v-if="showComparison && compareConfig1 && compareConfig2" class="comparison-panel">
-          <div class="comparison-header">
-            <h3>配置对比结果</h3>
-            <button class="close-btn" @click="showComparison = false">×</button>
+            <div class="ranking-content">
+              <div
+                v-for="(ranking, index) in rankings['amd-cpu']"
+                :key="ranking.model"
+                class="ranking-item"
+              >
+                <div class="ranking-rank">#{{ index + 1 }}</div>
+                <div class="ranking-info">
+                  <div class="ranking-model">{{ ranking.model }}</div>
+                  <div class="score-bar-container">
+                    <div class="score-bar">
+                      <div class="score-fill" :style="{ width: ranking.score + '%' }"></div>
+                    </div>
+                  </div>
+                </div>
+                <span class="score-value">{{ ranking.score }}</span>
+              </div>
+            </div>
           </div>
 
-          <div class="comparison-content">
-            <div class="comparison-grid">
-              <div class="comparison-col">
-                <h4>{{ getConfigById(compareConfig1)?.name }}</h4>
-                <div class="comparison-details">
-                  <div class="detail-item">
-                    <span>价格:</span>
-                    <strong>¥{{ getConfigById(compareConfig1)?.price.toLocaleString() }}</strong>
-                  </div>
-                  <div class="detail-item">
-                    <span>性能评分:</span>
-                    <strong>{{ getConfigById(compareConfig1)?.performance }}/100</strong>
-                  </div>
-                  <div class="detail-item">
-                    <span>类别:</span>
-                    <span>{{ getConfigById(compareConfig1)?.category }}</span>
-                  </div>
-                </div>
+          <!-- NVIDIA GPU 排行榜卡片 -->
+          <div
+            class="ranking-card"
+            v-if="rankings['nvidia-gpu'] && rankings['nvidia-gpu'].length > 0"
+          >
+            <div class="ranking-header">
+              <div class="ranking-icon">
+                <MonitorIcon size="24" />
               </div>
+              <h3 class="ranking-title">NVIDIA GPU 排行榜</h3>
+            </div>
 
-              <div class="comparison-col">
-                <h4>{{ getConfigById(compareConfig2)?.name }}</h4>
-                <div class="comparison-details">
-                  <div class="detail-item">
-                    <span>价格:</span>
-                    <strong>¥{{ getConfigById(compareConfig2)?.price.toLocaleString() }}</strong>
-                  </div>
-                  <div class="detail-item">
-                    <span>性能评分:</span>
-                    <strong>{{ getConfigById(compareConfig2)?.performance }}/100</strong>
-                  </div>
-                  <div class="detail-item">
-                    <span>类别:</span>
-                    <span>{{ getConfigById(compareConfig2)?.category }}</span>
+            <div class="ranking-content">
+              <div
+                v-for="(ranking, index) in rankings['nvidia-gpu']"
+                :key="ranking.model"
+                class="ranking-item"
+              >
+                <div class="ranking-rank">#{{ index + 1 }}</div>
+                <div class="ranking-info">
+                  <div class="ranking-model">{{ ranking.model }}</div>
+                  <div class="score-bar-container">
+                    <div class="score-bar">
+                      <div class="score-fill" :style="{ width: ranking.score + '%' }"></div>
+                    </div>
                   </div>
                 </div>
+                <span class="score-value">{{ ranking.score }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AMD GPU 排行榜卡片 -->
+          <div class="ranking-card" v-if="rankings['amd-gpu'] && rankings['amd-gpu'].length > 0">
+            <div class="ranking-header">
+              <div class="ranking-icon">
+                <MonitorIcon size="24" />
+              </div>
+              <h3 class="ranking-title">AMD GPU 排行榜</h3>
+            </div>
+
+            <div class="ranking-content">
+              <div
+                v-for="(ranking, index) in rankings['amd-gpu']"
+                :key="ranking.model"
+                class="ranking-item"
+              >
+                <div class="ranking-rank">#{{ index + 1 }}</div>
+                <div class="ranking-info">
+                  <div class="ranking-model">{{ ranking.model }}</div>
+                  <div class="score-bar-container">
+                    <div class="score-bar">
+                      <div class="score-fill" :style="{ width: ranking.score + '%' }"></div>
+                    </div>
+                  </div>
+                </div>
+                <span class="score-value">{{ ranking.score }}</span>
               </div>
             </div>
           </div>
@@ -209,166 +214,31 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { pcAPI } from '@/services/api'
+import {
+  CpuIcon,
+  MonitorIcon,
+  ZapIcon,
+  PlugIcon,
+  HardDriveIcon,
+  BatteryIcon,
+  Monitor,
+  SnowflakeIcon,
+  WindIcon,
+  SettingsIcon,
+} from 'lucide-vue-next'
 
 // 配置数据
-const configurations = ref([
-  {
-    id: 'budget-3000',
-    name: '3000元入门配置',
-    price: 2999,
-    category: '入门级',
-    performance: 65,
-    description: '适合日常办公、学习使用的经济型配置',
-    components: [
-      { name: 'CPU', model: 'Intel i3-12100F', price: 699 },
-      { name: '主板', model: 'H610M', price: 499 },
-      { name: '内存', model: '16GB DDR4 3200MHz', price: 299 },
-      { name: '显卡', model: '集成显卡', price: 0 },
-      { name: '硬盘', model: '512GB NVMe SSD', price: 299 },
-      { name: '电源', model: '500W 80Plus', price: 249 },
-      { name: '机箱', model: 'MATX机箱', price: 199 },
-      { name: '显示器', model: '23.8英寸 1080P', price: 599 },
-    ],
-  },
-  {
-    id: 'mid-5000',
-    name: '5000元主流配置',
-    price: 4999,
-    category: '主流级',
-    performance: 78,
-    description: '平衡性能与价格，适合游戏和创作',
-    components: [
-      { name: 'CPU', model: 'AMD Ryzen 5 5600X', price: 1199 },
-      { name: '主板', model: 'B550M', price: 699 },
-      { name: '内存', model: '16GB DDR4 3600MHz', price: 399 },
-      { name: '显卡', model: 'NVIDIA RTX 3060 12GB', price: 2299 },
-      { name: '硬盘', model: '1TB NVMe SSD', price: 499 },
-      { name: '电源', model: '650W 80Plus Bronze', price: 399 },
-      { name: '机箱', model: 'ATX中塔机箱', price: 299 },
-      { name: '显示器', model: '27英寸 2K IPS', price: 1299 },
-    ],
-  },
-  {
-    id: 'high-8000',
-    name: '8000元高性能配置',
-    price: 7999,
-    category: '高性能',
-    performance: 85,
-    description: '畅玩3A大作，满足专业创作需求',
-    components: [
-      { name: 'CPU', model: 'Intel i5-13600KF', price: 1999 },
-      { name: '主板', model: 'B760M', price: 999 },
-      { name: '内存', model: '32GB DDR5 5600MHz', price: 899 },
-      { name: '显卡', model: 'NVIDIA RTX 4060 Ti 8GB', price: 3299 },
-      { name: '硬盘', model: '1TB NVMe PCIe 4.0 SSD', price: 599 },
-      { name: '电源', model: '750W 80Plus Gold', price: 599 },
-      { name: '机箱', model: 'ATX电竞机箱', price: 399 },
-      { name: '显示器', model: '27英寸 2K 165Hz', price: 1499 },
-    ],
-  },
-  {
-    id: 'enthusiast-12000',
-    name: '12000元发烧配置',
-    price: 11999,
-    category: '发烧级',
-    performance: 92,
-    description: '顶级性能，满足4K游戏和专业工作',
-    components: [
-      { name: 'CPU', model: 'AMD Ryzen 7 7800X3D', price: 2999 },
-      { name: '主板', model: 'X670E', price: 1999 },
-      { name: '内存', model: '32GB DDR5 6000MHz', price: 1199 },
-      { name: '显卡', model: 'NVIDIA RTX 4070 12GB', price: 4499 },
-      { name: '硬盘', model: '2TB NVMe PCIe 4.0 SSD', price: 999 },
-      { name: '电源', model: '850W 80Plus Platinum', price: 899 },
-      { name: '机箱', model: '全塔机箱', price: 699 },
-      { name: '显示器', model: '32英寸 4K 144Hz', price: 2999 },
-    ],
-  },
-  {
-    id: 'workstation-20000',
-    name: '20000元工作站配置',
-    price: 19999,
-    category: '工作站',
-    performance: 96,
-    description: '专业级配置，适合视频剪辑、3D渲染',
-    components: [
-      { name: 'CPU', model: 'Intel i9-14900K', price: 4499 },
-      { name: '主板', model: 'Z790', price: 2499 },
-      { name: '内存', model: '64GB DDR5 6400MHz', price: 2199 },
-      { name: '显卡', model: 'NVIDIA RTX 4080 16GB', price: 8499 },
-      { name: '硬盘', model: '2TB NVMe PCIe 5.0 SSD', price: 1499 },
-      { name: '电源', model: '1000W 80Plus Titanium', price: 1499 },
-      { name: '机箱', model: '全塔静音机箱', price: 999 },
-      { name: '显示器', model: '34英寸 5K2K曲面', price: 3999 },
-    ],
-  },
-  {
-    id: 'ultimate-30000',
-    name: '30000元终极配置',
-    price: 29999,
-    category: '终极',
-    performance: 99,
-    description: '无与伦比的性能，顶级游戏和创作体验',
-    components: [
-      { name: 'CPU', model: 'AMD Ryzen 9 7950X3D', price: 5999 },
-      { name: '主板', model: 'X670E Extreme', price: 3999 },
-      { name: '内存', model: '128GB DDR5 6000MHz', price: 3999 },
-      { name: '显卡', model: 'NVIDIA RTX 4090 24GB', price: 12999 },
-      { name: '硬盘', model: '4TB NVMe PCIe 5.0 SSD', price: 2999 },
-      { name: '电源', model: '1200W 80Plus Titanium', price: 1999 },
-      { name: '机箱', model: '全塔定制机箱', price: 1999 },
-      { name: '显示器', model: '49英寸 5K超宽曲面', price: 6999 },
-    ],
-  },
-])
+const configurations = ref([])
 
 // 排行榜数据
-const rankings = ref({
-  'intel-cpu': [
-    { model: 'Intel i9-14900K', score: 98, price: 4499, recommendation: 9 },
-    { model: 'Intel i7-14700K', score: 95, price: 3499, recommendation: 8 },
-    { model: 'Intel i5-14600K', score: 88, price: 2499, recommendation: 9 },
-    { model: 'Intel i3-14100', score: 75, price: 1299, recommendation: 7 },
-    { model: 'Intel Core i9-13900K', score: 96, price: 3999, recommendation: 8 },
-  ],
-  'amd-cpu': [
-    { model: 'AMD Ryzen 9 7950X3D', score: 97, price: 5999, recommendation: 9 },
-    { model: 'AMD Ryzen 7 7800X3D', score: 95, price: 2999, recommendation: 10 },
-    { model: 'AMD Ryzen 5 7600X', score: 85, price: 1999, recommendation: 8 },
-    { model: 'AMD Ryzen 9 7900X', score: 92, price: 3999, recommendation: 7 },
-    { model: 'AMD Ryzen 5 5600X', score: 80, price: 1199, recommendation: 9 },
-  ],
-  'nvidia-gpu': [
-    { model: 'NVIDIA RTX 4090', score: 100, price: 12999, recommendation: 8 },
-    { model: 'NVIDIA RTX 4080', score: 95, price: 8499, recommendation: 7 },
-    { model: 'NVIDIA RTX 4070 Ti', score: 90, price: 5999, recommendation: 8 },
-    { model: 'NVIDIA RTX 4060 Ti', score: 85, price: 3299, recommendation: 9 },
-    { model: 'NVIDIA RTX 4060', score: 80, price: 2499, recommendation: 9 },
-  ],
-  'amd-gpu': [
-    { model: 'AMD RX 7900 XTX', score: 96, price: 7999, recommendation: 9 },
-    { model: 'AMD RX 7900 XT', score: 92, price: 5999, recommendation: 8 },
-    { model: 'AMD RX 7800 XT', score: 88, price: 3999, recommendation: 9 },
-    { model: 'AMD RX 7700 XT', score: 82, price: 3499, recommendation: 7 },
-    { model: 'AMD RX 7600', score: 75, price: 2299, recommendation: 8 },
-  ],
-})
+const rankings = ref({})
 
 // 状态管理
 const selectedConfig = ref<string | null>(null)
-const activeTab = ref('intel-cpu')
 const compareConfig1 = ref('')
 const compareConfig2 = ref('')
 const showComparison = ref(false)
 const isLoading = ref(true)
-
-// 标签页配置
-const rankingTabs = [
-  { key: 'intel-cpu', label: 'Intel CPU' },
-  { key: 'amd-cpu', label: 'AMD CPU' },
-  { key: 'nvidia-gpu', label: 'NVIDIA GPU' },
-  { key: 'amd-gpu', label: 'AMD GPU' },
-]
 
 // 方法
 const selectConfig = (configId: string) => {
@@ -379,12 +249,25 @@ const getSelectedConfig = () => {
   return configurations.value.find((config) => config.id === selectedConfig.value)
 }
 
-const getCurrentRankings = () => {
-  return rankings.value[activeTab.value as keyof typeof rankings.value] || []
-}
-
 const getConfigById = (id: string) => {
   return configurations.value.find((config) => config.id === id)
+}
+
+// 获取硬件图标
+const getComponentIcon = (componentName: string) => {
+  const iconMap: Record<string, any> = {
+    CPU: ZapIcon,
+    主板: PlugIcon,
+    内存: HardDriveIcon,
+    显卡: MonitorIcon,
+    硬盘: HardDriveIcon,
+    电源: BatteryIcon,
+    机箱: Monitor,
+    显示器: Monitor,
+    散热器: SnowflakeIcon,
+    风扇: WindIcon,
+  }
+  return iconMap[componentName] || SettingsIcon
 }
 
 // 加载电脑装机数据
@@ -393,18 +276,41 @@ const loadPCData = async () => {
     isLoading.value = true
     const response = await pcAPI.getPCData()
 
-    // 更新数据（如果后端有提供）
-    if (response && response.data) {
-      if (response.data.configurations) {
-        configurations.value = response.data.configurations
+    // 更新数据
+    if (response) {
+      if ((response as any).configurations) {
+        configurations.value = (response as any).configurations
       }
-      if (response.data.rankings) {
-        rankings.value = response.data.rankings
+      if ((response as any).rankings) {
+        rankings.value = (response as any).rankings
       }
     }
   } catch (error) {
     console.error('加载电脑装机数据失败:', error)
-    // 使用默认数据继续显示
+    // 如果后端API失败，使用默认数据继续显示
+    configurations.value = [
+      {
+        id: 'budget-3000',
+        name: '3000元入门配置',
+        price: 2999,
+        category: '入门级',
+        performance: 65,
+        description: '适合日常办公、学习使用的经济型配置',
+        components: [
+          { name: 'CPU', model: 'Intel i3-12100F', price: 699 },
+          { name: '主板', model: 'H610M', price: 499 },
+          { name: '内存', model: '16GB DDR4 3200MHz', price: 299 },
+          { name: '显卡', model: '集成显卡', price: 0 },
+          { name: '硬盘', model: '512GB NVMe SSD', price: 299 },
+          { name: '电源', model: '500W 80Plus', price: 249 },
+          { name: '机箱', model: 'MATX机箱', price: 199 },
+          { name: '显示器', model: '23.8英寸 1080P', price: 599 },
+        ],
+      },
+    ]
+    rankings.value = {
+      'intel-cpu': [{ model: 'Intel i9-14900K', score: 98, price: 4499, recommendation: 9 }],
+    }
   } finally {
     isLoading.value = false
   }
@@ -496,10 +402,10 @@ onMounted(() => {
   color: var(--text-primary);
 }
 
-.config-price {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--primary-color);
+.config-recommendation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .config-category {
@@ -549,17 +455,40 @@ onMounted(() => {
 
 .component-item {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) 0;
   font-size: var(--font-size-sm);
+}
+
+.component-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--background-secondary);
+  border-radius: var(--border-radius-sm);
+  flex-shrink: 0;
+  color: var(--primary-color);
+}
+
+.component-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .component-name {
   color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  margin-bottom: 2px;
 }
 
 .component-model {
   color: var(--text-primary);
   font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
 }
 
 .more-components {
@@ -636,86 +565,110 @@ onMounted(() => {
   gap: var(--spacing-xs);
 }
 
-.component-price {
-  font-weight: var(--font-weight-bold);
-  color: var(--primary-color);
-}
-
-.total-price {
-  text-align: center;
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--primary-color);
-  padding: var(--spacing-lg);
-  background: var(--background-secondary);
-  border-radius: var(--border-radius-md);
-}
-
 /* 排行榜区域 */
 .rankings-section {
   padding: var(--spacing-xxl) 0;
-  background: var(--background-primary);
-}
-
-.rankings-tabs {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-xl);
-  flex-wrap: wrap;
-}
-
-.tab-btn {
-  padding: var(--spacing-sm) var(--spacing-lg);
   background: var(--background-secondary);
-  border: none;
-  border-radius: var(--border-radius-md);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
 }
 
-.tab-btn.active {
-  background: var(--primary-color);
-  color: white;
-}
-
-.rankings-content {
+.rankings-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.ranking-card {
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+}
+
+.ranking-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.ranking-header {
+  display: flex;
+  align-items: center;
   gap: var(--spacing-md);
-  max-width: 600px;
-  margin: 0 auto;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ranking-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--background-secondary);
+  border-radius: var(--border-radius-md);
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.ranking-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.ranking-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
 .ranking-item {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  padding: var(--spacing-lg);
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm);
   background: var(--background-secondary);
   border-radius: var(--border-radius-md);
-  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.ranking-item:hover {
+  background: var(--background-tertiary);
+}
+
+.ranking-rank {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-color);
+  background: var(--background-primary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  min-width: 40px;
+  text-align: center;
 }
 
 .ranking-info {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
 }
 
 .ranking-model {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-sm);
   color: var(--text-primary);
 }
 
-.ranking-score {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
+.score-bar-container {
+  width: 100%;
 }
 
 .score-bar {
-  flex: 1;
+  width: 100%;
   height: 6px;
   background: var(--background-tertiary);
   border-radius: 3px;
@@ -728,45 +681,12 @@ onMounted(() => {
   transition: width 0.3s ease;
 }
 
-.score-text {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
-  min-width: 30px;
-}
-
-.ranking-details {
-  text-align: right;
-}
-
-.ranking-price {
+.score-value {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-bold);
-  color: var(--primary-color);
-  margin-bottom: var(--spacing-xs);
-}
-
-.ranking-recommendation {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.recommendation-stars {
-  display: flex;
-}
-
-.star {
-  color: var(--text-tertiary);
-  font-size: var(--font-size-sm);
-}
-
-.star.active {
-  color: #ffd700;
-}
-
-.recommendation-text {
-  font-size: var(--font-size-xs);
-  color: var(--text-tertiary);
+  color: var(--text-primary);
+  min-width: 40px;
+  text-align: center;
 }
 
 /* 对比区域 */
@@ -843,31 +763,41 @@ onMounted(() => {
     grid-template-columns: 1fr;
   }
 
-  .rankings-tabs {
-    justify-content: stretch;
+  .rankings-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
   }
 
-  .tab-btn {
-    flex: 1;
-    text-align: center;
+  .ranking-card {
+    padding: var(--spacing-lg);
+  }
+
+  .ranking-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
   }
 
   .ranking-item {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--spacing-md);
+    grid-template-columns: auto 1fr auto;
+    gap: var(--spacing-sm);
   }
 
-  .ranking-score {
-    justify-content: space-between;
+  .ranking-info {
+    gap: var(--spacing-xs);
+  }
+
+  .score-bar-container {
+    width: 100%;
   }
 
   .compare-controls {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .compare-select {
-    width: 100%;
+    min-width: auto;
   }
 
   .comparison-grid {

@@ -12,21 +12,6 @@
       "category": "中端手机",
       "kernels": [
         {
-          "id": "kernel-1",
-          "name": "稳定版内核",
-          "version": "1.0.0",
-          "date": "2024-01-15",
-          "size": "15.2",
-          "sizeUnit": "MB",
-          "description": "优化电池续航，提升系统稳定性",
-          "downloadUrl": "/downloads/kernels/redmi-note12-turbo-v1.0.0.zip",
-          "changelog": [
-            "首次发布",
-            "基础功能稳定",
-            "优化电池管理"
-          ]
-        },
-        {
           "id": "kernel-2",
           "name": "性能优化版",
           "version": "1.1.0",
@@ -35,11 +20,7 @@
           "sizeUnit": "MB",
           "description": "提升游戏体验，优化GPU性能",
           "downloadUrl": "/downloads/kernels/redmi-note12-turbo-v1.1.0.zip",
-          "changelog": [
-            "优化GPU性能",
-            "修复已知问题",
-            "提升系统响应速度"
-          ]
+          "changelog": ["优化GPU性能", "修复已知问题", "提升系统响应速度"]
         }
       ],
       "recoveries": [
@@ -99,11 +80,7 @@
           "sizeUnit": "MB",
           "description": "优化系统流畅度，提升用户体验",
           "downloadUrl": "/downloads/kernels/k40s-v2.0.1.zip",
-          "changelog": [
-            "优化系统流畅度",
-            "修复内存泄漏问题",
-            "提升系统稳定性"
-          ]
+          "changelog": ["优化系统流畅度", "修复内存泄漏问题", "提升系统稳定性"]
         }
       ],
       "recoveries": [
@@ -157,11 +134,7 @@
           "sizeUnit": "MB",
           "description": "优化横屏体验，提升多任务性能",
           "downloadUrl": "/downloads/kernels/mi-pad5-v1.2.0.zip",
-          "changelog": [
-            "优化横屏体验",
-            "提升多任务性能",
-            "适配平板特殊功能"
-          ]
+          "changelog": ["优化横屏体验", "提升多任务性能", "适配平板特殊功能"]
         }
       ],
       "recoveries": [
