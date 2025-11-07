@@ -3,7 +3,7 @@
     <!-- 页面标题 -->
     <section class="page-header">
       <div class="container">
-        <h1 class="page-title"><MonitorIcon size="24" /> 电脑装机配置</h1>
+        <h1 class="page-title"><MonitorIcon :size="24" /> 电脑装机配置</h1>
         <p class="page-description">6个主流价位配置单，Intel/AMD CPU和NVIDIA/AMD GPU性能排行榜</p>
       </div>
     </section>
@@ -38,14 +38,14 @@
             <div class="config-components">
               <div
                 v-for="component in config.components"
-                :key="component.name"
+                :key="component.type"
                 class="component-item"
               >
                 <div class="component-icon">
-                  <component :is="getComponentIcon(component.name)" size="16" />
+                  <component :is="getComponentIcon(component.type)" :size="16" />
                 </div>
                 <div class="component-info">
-                  <span class="component-name">{{ component.name }}</span>
+                  <span class="component-name">{{ component.type }}</span>
                   <span class="component-model">{{ component.model }}</span>
                 </div>
               </div>
@@ -64,11 +64,11 @@
             <div class="components-list">
               <div
                 v-for="component in getSelectedConfig()?.components"
-                :key="component.name"
+                :key="component.type"
                 class="component-detail"
               >
                 <div class="component-info">
-                  <span class="component-name">{{ component.name }}</span>
+                  <span class="component-name">{{ component.type }}</span>
                   <span class="component-model">{{ component.model }}</span>
                 </div>
               </div>
@@ -85,13 +85,10 @@
 
         <div class="rankings-grid">
           <!-- Intel CPU 排行榜卡片 -->
-          <div
-            class="ranking-card"
-            v-if="rankings['intel-cpu'] && rankings['intel-cpu'].length > 0"
-          >
+          <div class="ranking-card" v-if="rankings['intel-cpu'] && rankings['intel-cpu'].length > 0">
             <div class="ranking-header">
               <div class="ranking-icon">
-                <CpuIcon size="24" />
+                <Cpu :size="24" />
               </div>
               <h3 class="ranking-title">Intel CPU 排行榜</h3>
             </div>
@@ -120,7 +117,7 @@
           <div class="ranking-card" v-if="rankings['amd-cpu'] && rankings['amd-cpu'].length > 0">
             <div class="ranking-header">
               <div class="ranking-icon">
-                <CpuIcon size="24" />
+                <Cpu :size="24" />
               </div>
               <h3 class="ranking-title">AMD CPU 排行榜</h3>
             </div>
@@ -152,7 +149,7 @@
           >
             <div class="ranking-header">
               <div class="ranking-icon">
-                <MonitorIcon size="24" />
+                <MonitorIcon :size="24" />
               </div>
               <h3 class="ranking-title">NVIDIA GPU 排行榜</h3>
             </div>
@@ -181,7 +178,7 @@
           <div class="ranking-card" v-if="rankings['amd-gpu'] && rankings['amd-gpu'].length > 0">
             <div class="ranking-header">
               <div class="ranking-icon">
-                <MonitorIcon size="24" />
+                <MonitorIcon :size="24" />
               </div>
               <h3 class="ranking-title">AMD GPU 排行榜</h3>
             </div>
@@ -214,17 +211,9 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { pcAPI } from '@/services/api'
-import {
-  CpuIcon,
-  MonitorIcon,
-  ZapIcon,
-  PlugIcon,
-  HardDriveIcon,
-  BatteryIcon,
-  Monitor,
-  SnowflakeIcon,
-  WindIcon,
-  SettingsIcon,
+import { 
+  Monitor, Cpu, HardDrive, Monitor as Display, 
+  Zap
 } from 'lucide-vue-next'
 
 // 配置数据
@@ -254,20 +243,39 @@ const getConfigById = (id: string) => {
 }
 
 // 获取硬件图标
-const getComponentIcon = (componentName: string) => {
-  const iconMap: Record<string, any> = {
-    CPU: ZapIcon,
-    主板: PlugIcon,
-    内存: HardDriveIcon,
-    显卡: MonitorIcon,
-    硬盘: HardDriveIcon,
-    电源: BatteryIcon,
-    机箱: Monitor,
-    显示器: Monitor,
-    散热器: SnowflakeIcon,
-    风扇: WindIcon,
+const getComponentIcon = (type: string) => {
+  const iconMap: { [key: string]: any } = {
+    'CPU': Cpu,
+    '显卡': Zap,
+    '内存': HardDrive,
+    '硬盘': HardDrive,
+    '主板': HardDrive, // 使用硬盘图标代替主板图标
+    '显示器': Display,
+    '电源': Zap,
+    '机箱': HardDrive,
+    '散热器': Cpu,
+    '风扇': Zap
   }
-  return iconMap[componentName] || SettingsIcon
+  return iconMap[type] || Cpu
+}
+
+// 获取硬件图标类名（基于WindowsDevices.vue的实现风格）
+const getComponentIconClass = (componentName: string) => {
+  // 根据组件类型返回对应的Tailwind CSS类名
+  const classMap: Record<string, string> = {
+    CPU: 'w-4 h-4 text-blue-500',
+    主板: 'w-4 h-4 text-green-500',
+    内存: 'w-4 h-4 text-purple-500',
+    显卡: 'w-4 h-4 text-red-500',
+    硬盘: 'w-4 h-4 text-yellow-500',
+    电源: 'w-4 h-4 text-orange-500',
+    机箱: 'w-4 h-4 text-gray-500',
+    显示器: 'w-4 h-4 text-indigo-500',
+    散热器: 'w-4 h-4 text-cyan-500',
+    风扇: 'w-4 h-4 text-teal-500',
+  }
+  
+  return classMap[componentName] || 'w-4 h-4 text-gray-500'
 }
 
 // 加载电脑装机数据
@@ -287,30 +295,12 @@ const loadPCData = async () => {
     }
   } catch (error) {
     console.error('加载电脑装机数据失败:', error)
-    // 如果后端API失败，使用默认数据继续显示
-    configurations.value = [
-      {
-        id: 'budget-3000',
-        name: '3000元入门配置',
-        price: 2999,
-        category: '入门级',
-        performance: 65,
-        description: '适合日常办公、学习使用的经济型配置',
-        components: [
-          { name: 'CPU', model: 'Intel i3-12100F', price: 699 },
-          { name: '主板', model: 'H610M', price: 499 },
-          { name: '内存', model: '16GB DDR4 3200MHz', price: 299 },
-          { name: '显卡', model: '集成显卡', price: 0 },
-          { name: '硬盘', model: '512GB NVMe SSD', price: 299 },
-          { name: '电源', model: '500W 80Plus', price: 249 },
-          { name: '机箱', model: 'MATX机箱', price: 199 },
-          { name: '显示器', model: '23.8英寸 1080P', price: 599 },
-        ],
-      },
-    ]
-    rankings.value = {
-      'intel-cpu': [{ model: 'Intel i9-14900K', score: 98, price: 4499, recommendation: 9 }],
-    }
+    // 清空数据，显示空状态或错误提示
+    configurations.value = []
+    rankings.value = {}
+    
+    // 可以在这里添加错误状态管理
+    // 例如：errorMessage.value = '数据加载失败，请稍后重试'
   } finally {
     isLoading.value = false
   }

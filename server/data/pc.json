@@ -3,7 +3,7 @@
     {
       "id": "budget-3000",
       "name": "3000元入门配置",
-      "price": 2999,
+      "price": 3270,
       "currency": "CNY",
       "category": "入门级",
       "performance": 65,
@@ -12,9 +12,9 @@
       "components": [
         {"type": "CPU", "brand": "Intel", "model": "i3-12100F", "specs": "4核8线程", "price": 699},
         {"type": "主板", "brand": "Intel", "model": "H610M", "specs": "MATX", "price": 499},
-        {"type": "内存", "brand": "DDR4", "model": "16GB 3200MHz", "specs": "双通道", "price": 299},
+        {"type": "内存", "brand": "DDR4", "model": "16GB 3200MHz", "specs": "双通道", "price": 450},
         {"type": "显卡", "brand": "集成显卡", "model": "Intel UHD Graphics", "specs": "", "price": 0},
-        {"type": "硬盘", "brand": "NVMe", "model": "512GB SSD", "specs": "PCIe 3.0", "price": 299},
+        {"type": "硬盘", "brand": "NVMe", "model": "512GB SSD", "specs": "PCIe 3.0", "price": 320},
         {"type": "电源", "brand": "500W", "model": "80Plus", "specs": "标准", "price": 249},
         {"type": "机箱", "brand": "MATX", "model": "标准机箱", "specs": "", "price": 199},
         {"type": "显示器", "brand": "23.8英寸", "model": "1080P", "specs": "IPS", "price": 599}
@@ -23,7 +23,7 @@
     {
       "id": "mid-5000",
       "name": "5000元主流配置",
-      "price": 4999,
+      "price": 5280,
       "currency": "CNY",
       "category": "主流级",
       "performance": 78,
@@ -32,9 +32,9 @@
       "components": [
         {"type": "CPU", "brand": "AMD", "model": "Ryzen 5 5600X", "specs": "6核12线程", "price": 1199},
         {"type": "主板", "brand": "AMD", "model": "B550M", "specs": "MATX", "price": 699},
-        {"type": "内存", "brand": "DDR4", "model": "16GB 3600MHz", "specs": "双通道", "price": 399},
+        {"type": "内存", "brand": "DDR4", "model": "16GB 3600MHz", "specs": "双通道", "price": 450},
         {"type": "显卡", "brand": "NVIDIA", "model": "RTX 3060 12GB", "specs": "GDDR6", "price": 2299},
-        {"type": "硬盘", "brand": "NVMe", "model": "1TB SSD", "specs": "PCIe 3.0", "price": 499},
+        {"type": "硬盘", "brand": "NVMe", "model": "1TB SSD", "specs": "PCIe 3.0", "price": 620},
         {"type": "电源", "brand": "650W", "model": "80Plus Bronze", "specs": "铜牌认证", "price": 399},
         {"type": "机箱", "brand": "ATX", "model": "中塔机箱", "specs": "", "price": 299},
         {"type": "显示器", "brand": "27英寸", "model": "2K IPS", "specs": "", "price": 1299}
@@ -43,7 +43,7 @@
     {
       "id": "high-8000",
       "name": "8000元高性能配置",
-      "price": 7999,
+      "price": 8450,
       "currency": "CNY",
       "category": "高性能",
       "performance": 85,
@@ -52,9 +52,9 @@
       "components": [
         {"type": "CPU", "brand": "Intel", "model": "i5-13600KF", "specs": "14核20线程", "price": 1999},
         {"type": "主板", "brand": "Intel", "model": "B760M", "specs": "MATX", "price": 999},
-        {"type": "内存", "brand": "DDR5", "model": "32GB 5600MHz", "specs": "双通道", "price": 899},
+        {"type": "内存", "brand": "DDR5", "model": "32GB 5600MHz", "specs": "双通道", "price": 800},
         {"type": "显卡", "brand": "NVIDIA", "model": "RTX 4060 Ti 8GB", "specs": "GDDR6", "price": 3299},
-        {"type": "硬盘", "brand": "NVMe", "model": "1TB PCIe 4.0 SSD", "specs": "PCIe 4.0", "price": 599},
+        {"type": "硬盘", "brand": "NVMe", "model": "1TB PCIe 4.0 SSD", "specs": "PCIe 4.0", "price": 750},
         {"type": "电源", "brand": "750W", "model": "80Plus Gold", "specs": "金牌认证", "price": 599},
         {"type": "机箱", "brand": "ATX", "model": "电竞机箱", "specs": "", "price": 399},
         {"type": "显示器", "brand": "27英寸", "model": "2K 165Hz", "specs": "IPS", "price": 1499}
@@ -63,7 +63,7 @@
     {
       "id": "enthusiast-12000",
       "name": "12000元发烧配置",
-      "price": 11999,
+      "price": 12500,
       "currency": "CNY",
       "category": "发烧级",
       "performance": 92,
@@ -72,9 +72,9 @@
       "components": [
         {"type": "CPU", "brand": "AMD", "model": "Ryzen 7 7800X3D", "specs": "8核16线程", "price": 2999},
         {"type": "主板", "brand": "AMD", "model": "X670E", "specs": "ATX", "price": 1999},
-        {"type": "内存", "brand": "DDR5", "model": "32GB 6000MHz", "specs": "双通道", "price": 1199},
+        {"type": "内存", "brand": "DDR5", "model": "32GB 6000MHz", "specs": "双通道", "price": 1200},
         {"type": "显卡", "brand": "NVIDIA", "model": "RTX 4070 12GB", "specs": "GDDR6X", "price": 4499},
-        {"type": "硬盘", "brand": "NVMe", "model": "2TB PCIe 4.0 SSD", "specs": "PCIe 4.0", "price": 999},
+        {"type": "硬盘", "brand": "NVMe", "model": "2TB PCIe 4.0 SSD", "specs": "PCIe 4.0", "price": 1200},
         {"type": "电源", "brand": "850W", "model": "80Plus Platinum", "specs": "白金认证", "price": 899},
         {"type": "机箱", "brand": "全塔", "model": "标准机箱", "specs": "", "price": 699},
         {"type": "显示器", "brand": "32英寸", "model": "4K 144Hz", "specs": "IPS", "price": 2999}
@@ -83,7 +83,7 @@
     {
       "id": "workstation-20000",
       "name": "20000元工作站配置",
-      "price": 19999,
+      "price": 20900,
       "currency": "CNY",
       "category": "工作站",
       "performance": 96,
@@ -92,9 +92,9 @@
       "components": [
         {"type": "CPU", "brand": "Intel", "model": "i9-14900K", "specs": "24核32线程", "price": 4499},
         {"type": "主板", "brand": "Intel", "model": "Z790", "specs": "ATX", "price": 2499},
-        {"type": "内存", "brand": "DDR5", "model": "64GB 6400MHz", "specs": "四通道", "price": 2199},
+        {"type": "内存", "brand": "DDR5", "model": "64GB 6400MHz", "specs": "四通道", "price": 2400},
         {"type": "显卡", "brand": "NVIDIA", "model": "RTX 4080 16GB", "specs": "GDDR6X", "price": 8499},
-        {"type": "硬盘", "brand": "NVMe", "model": "2TB PCIe 5.0 SSD", "specs": "PCIe 5.0", "price": 1499},
+        {"type": "硬盘", "brand": "NVMe", "model": "2TB PCIe 5.0 SSD", "specs": "PCIe 5.0", "price": 1500},
         {"type": "电源", "brand": "1000W", "model": "80Plus Titanium", "specs": "钛金认证", "price": 1499},
         {"type": "机箱", "brand": "全塔", "model": "静音机箱", "specs": "", "price": 999},
         {"type": "显示器", "brand": "34英寸", "model": "5K2K曲面", "specs": "超宽屏", "price": 3999}
@@ -103,7 +103,7 @@
     {
       "id": "ultimate-30000",
       "name": "30000元终极配置",
-      "price": 29999,
+      "price": 31600,
       "currency": "CNY",
       "category": "终极",
       "performance": 99,
@@ -112,15 +112,20 @@
       "components": [
         {"type": "CPU", "brand": "AMD", "model": "Ryzen 9 7950X3D", "specs": "16核32线程", "price": 5999},
         {"type": "主板", "brand": "AMD", "model": "X670E Extreme", "specs": "E-ATX", "price": 3999},
-        {"type": "内存", "brand": "DDR5", "model": "128GB 6000MHz", "specs": "四通道", "price": 3999},
+        {"type": "内存", "brand": "DDR5", "model": "128GB 6000MHz", "specs": "四通道", "price": 4000},
         {"type": "显卡", "brand": "NVIDIA", "model": "RTX 4090 24GB", "specs": "GDDR6X", "price": 12999},
-        {"type": "硬盘", "brand": "NVMe", "model": "4TB PCIe 5.0 SSD", "specs": "PCIe 5.0", "price": 2999},
+        {"type": "硬盘", "brand": "NVMe", "model": "4TB PCIe 5.0 SSD", "specs": "PCIe 5.0", "price": 3600},
         {"type": "电源", "brand": "1200W", "model": "80Plus Titanium", "specs": "钛金认证", "price": 1999},
         {"type": "机箱", "brand": "全塔", "model": "定制机箱", "specs": "", "price": 1999},
         {"type": "显示器", "brand": "49英寸", "model": "5K超宽曲面", "specs": "超宽屏", "price": 6999}
       ]
     }
   ],
+  "market_notes": {
+    "memory_price_trend": "DDR4内存价格大幅上涨，16GB型号从299元涨至450元左右",
+    "ssd_price_trend": "SSD价格普遍上涨，1TB型号从499元涨至620元左右",
+    "price_adjustment_reason": "根据2024年存储芯片市场价格波动调整，主要反映内存和SSD的实际成本变化"
+  },
   "rankings": {
     "intel-cpu": [
       {"model": "Intel i9-14900K", "score": 98, "price": 4499, "recommendation": 9},
