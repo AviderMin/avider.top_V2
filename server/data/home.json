@@ -1,0 +1,74 @@
+{
+  "banner": {
+    "images": [
+      {
+        "src": "/images/banner1.jpg",
+        "alt": "个人网站Banner1",
+        "title": "欢迎来到我的个人网站"
+      },
+      {
+        "src": "/images/banner2.jpg", 
+        "alt": "个人网站Banner2",
+        "title": "技术分享与资源下载"
+      }
+    ],
+    "autoPlay": true,
+    "interval": 5000
+  },
+  "introData": {
+    "title": "关于我",
+    "content": "这里将展示个人介绍信息，待后续提供具体文本内容。欢迎访问我的个人综合性网站，这里汇集了技术分享、资源下载和实用工具。"
+  },
+  "features": [
+    {
+      "id": 1,
+      "icon": "robot",
+      "title": "安卓刷机",
+      "description": "提供红米Note12 Turbo、K40S、小米Pad5等设备的刷机资源"
+    },
+    {
+      "id": 2,
+      "icon": "desktop",
+      "title": "电脑装机",
+      "description": "6个主流价位配置单和硬件性能排行榜"
+    },
+    {
+      "id": 3,
+      "icon": "music",
+      "title": "音乐播放",
+      "description": "在线音乐播放器，支持多种播放模式"
+    },
+    {
+      "id": 4,
+      "icon": "tools",
+      "title": "实用工具",
+      "description": "多种在线工具，满足日常使用需求"
+    }
+  ],
+  "quickNav": [
+    {
+      "path": "/android",
+      "icon": "robot",
+      "title": "安卓刷机",
+      "description": "内核和Recovery下载"
+    },
+    {
+      "path": "/pc",
+      "icon": "desktop",
+      "title": "电脑装机",
+      "description": "配置单和硬件排行"
+    },
+    {
+      "path": "/music",
+      "icon": "music",
+      "title": "音乐播放器",
+      "description": "在线音乐播放"
+    },
+    {
+      "path": "/tools",
+      "icon": "tools",
+      "title": "工具箱",
+      "description": "实用工具集合"
+    }
+  ]
+}

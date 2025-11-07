@@ -1,0 +1,122 @@
+{
+  "devices": [
+    {
+      "id": "marble",
+      "name": "REDMI Note 12 Turbo",
+      "image": "/images/android/devices/marble.png",
+      "description": "高性能中端手机，搭载骁龙7+ Gen2处理器",
+      "kernels": [
+        {
+          "id": "kernel-1",
+          "version": "v1.0.0",
+          "date": "2024-01-15",
+          "size": "15.2MB",
+          "description": "稳定版内核，优化电池续航",
+          "downloadUrl": "/downloads/kernels/redmi-note12-turbo-v1.0.0.zip",
+          "changelog": "首次发布，基础功能稳定"
+        },
+        {
+          "id": "kernel-2",
+          "version": "v1.1.0",
+          "date": "2024-02-20",
+          "size": "16.8MB",
+          "description": "性能优化版，提升游戏体验",
+          "downloadUrl": "/downloads/kernels/redmi-note12-turbo-v1.1.0.zip",
+          "changelog": "优化GPU性能，修复已知问题"
+        }
+      ],
+      "recoveries": [
+        {
+          "id": "recovery-1",
+          "name": "橙狐Recovery",
+          "version": "v3.7.0",
+          "date": "2024-01-10",
+          "size": "25.3MB",
+          "description": "功能完整的第三方Recovery",
+          "downloadUrl": "/downloads/recoveries/orange-fox-redmi-note12-turbo-v3.7.0.img",
+          "changelog": "支持最新Android版本，修复备份问题"
+        }
+      ],
+      "tutorials": [
+        {
+          "title": "刷机基础教程",
+          "url": "/tutorials/android-basics"
+        },
+        {
+          "title": "红米Note12 Turbo详细刷机指南",
+          "url": "/tutorials/redmi-note12-turbo"
+        }
+      ]
+    },
+    {
+      "id": "munch",
+      "name": "REDMI K40S",
+      "image": "/images/android/devices/munch.png",
+      "description": "性价比旗舰手机，搭载骁龙870处理器",
+      "kernels": [
+        {
+          "id": "kernel-3",
+          "version": "v2.0.1",
+          "date": "2024-01-08",
+          "size": "14.5MB",
+          "description": "稳定流畅版内核",
+          "downloadUrl": "/downloads/kernels/k40s-v2.0.1.zip",
+          "changelog": "优化系统流畅度，修复内存泄漏"
+        }
+      ],
+      "recoveries": [
+        {
+          "id": "recovery-2",
+          "name": "橙狐Recovery",
+          "version": "v3.6.5",
+          "date": "2023-12-15",
+          "size": "24.8MB",
+          "description": "K40S专用Recovery",
+          "downloadUrl": "/downloads/recoveries/orange-fox-k40s-v3.6.5.img",
+          "changelog": "适配最新MIUI版本，增加新功能"
+        }
+      ],
+      "tutorials": [
+        {
+          "title": "K40S刷机完整指南",
+          "url": "/tutorials/k40s-complete"
+        }
+      ]
+    },
+    {
+      "id": "nabu",
+      "name": "Xiaomi Pad 5",
+      "image": "/images/android/devices/nabu.png",
+      "description": "高性能平板电脑，搭载骁龙860处理器",
+      "kernels": [
+        {
+          "id": "kernel-4",
+          "version": "v1.2.0",
+          "date": "2024-02-01",
+          "size": "18.2MB",
+          "description": "平板优化版内核",
+          "downloadUrl": "/downloads/kernels/mi-pad5-v1.2.0.zip",
+          "changelog": "优化横屏体验，提升多任务性能"
+        }
+      ],
+      "recoveries": [
+        {
+          "id": "recovery-3",
+          "name": "橙狐Recovery",
+          "version": "v3.5.2",
+          "date": "2023-11-20",
+          "size": "26.1MB",
+          "description": "Pad5专用Recovery",
+          "downloadUrl": "/downloads/recoveries/orange-fox-mi-pad5-v3.5.2.img",
+          "changelog": "支持平板特有功能，修复显示问题"
+        }
+      ],
+      "tutorials": [
+        {
+          "title": "小米Pad5刷机教程",
+          "url": "/tutorials/mi-pad5"
+        }
+      ]
+    }
+  ]
+}
