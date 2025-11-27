@@ -110,30 +110,35 @@
               <div class="resource-section">
                 <h3 class="section-title">内核文件</h3>
                 <div class="resource-list">
-                  <div v-for="kernel in device?.kernels" :key="kernel.id" class="resource-item">
-                    <div class="resource-info">
-                      <h4 class="resource-name">{{ kernel.version }}</h4>
-                      <p class="resource-meta">
-                        <span class="resource-date">{{ kernel.date }}</span>
-                        <span class="resource-size">{{ kernel.size }}{{ kernel.sizeUnit || 'MB' }}</span>
-                      </p>
-                      <p class="resource-description">{{ kernel.description }}</p>
-                      <div class="changelog" v-if="kernel.changelog">
-                        <h5 class="changelog-title">更新日志：</h5>
-                        <ul class="changelog-list">
-                          <li v-for="(log, index) in getChangelogArray(kernel.changelog)" :key="index">{{ log }}</li>
-                        </ul>
+                  <div v-if="device?.kernels && device.kernels.length > 0">
+                    <div v-for="kernel in device.kernels" :key="kernel.id" class="resource-item">
+                      <div class="resource-info">
+                        <h4 class="resource-name">{{ kernel.version }}</h4>
+                        <p class="resource-meta">
+                          <span class="resource-date">{{ kernel.date }}</span>
+                          <span class="resource-size">{{ kernel.size }}{{ kernel.sizeUnit || 'MB' }}</span>
+                        </p>
+                        <p class="resource-description">{{ kernel.description }}</p>
+                        <div class="changelog" v-if="kernel.changelog">
+                          <h5 class="changelog-title">更新日志：</h5>
+                          <ul class="changelog-list">
+                            <li v-for="(log, index) in getChangelogArray(kernel.changelog)" :key="index">{{ log }}</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="download-section">
+                        <button
+                          class="download-btn"
+                          @click="handleDownload(kernel.downloadUrl, kernel.id)"
+                        >
+                          下载内核
+                        </button>
+                        <span class="download-count">{{ getDownloadCount(kernel.id) }} 次下载</span>
                       </div>
                     </div>
-                    <div class="download-section">
-                      <button
-                        class="download-btn"
-                        @click="handleDownload(kernel.downloadUrl, kernel.id)"
-                      >
-                        下载内核
-                      </button>
-                      <span class="download-count">{{ getDownloadCount(kernel.id) }} 次下载</span>
-                    </div>
+                  </div>
+                  <div v-else class="no-resource">
+                    <p>暂无可用内核资源</p>
                   </div>
                 </div>
               </div>
@@ -142,30 +147,35 @@
               <div class="resource-section">
                 <h3 class="section-title">橙狐Recovery</h3>
                 <div class="resource-list">
-                  <div v-for="recovery in device?.recoveries" :key="recovery.id" class="resource-item">
-                    <div class="resource-info">
-                      <h4 class="resource-name">{{ recovery.name }} {{ recovery.version }}</h4>
-                      <p class="resource-meta">
-                        <span class="resource-date">{{ recovery.date }}</span>
-                        <span class="resource-size">{{ recovery.size }}{{ recovery.sizeUnit || 'MB' }}</span>
-                      </p>
-                      <p class="resource-description">{{ recovery.description }}</p>
-                      <div class="changelog" v-if="recovery.changelog">
-                        <h5 class="changelog-title">更新日志：</h5>
-                        <ul class="changelog-list">
-                          <li v-for="(log, index) in getChangelogArray(recovery.changelog)" :key="index">{{ log }}</li>
-                        </ul>
+                  <div v-if="device?.recoveries && device.recoveries.length > 0">
+                    <div v-for="recovery in device.recoveries" :key="recovery.id" class="resource-item">
+                      <div class="resource-info">
+                        <h4 class="resource-name">{{ recovery.name }} {{ recovery.version }}</h4>
+                        <p class="resource-meta">
+                          <span class="resource-date">{{ recovery.date }}</span>
+                          <span class="resource-size">{{ recovery.size }}{{ recovery.sizeUnit || 'MB' }}</span>
+                        </p>
+                        <p class="resource-description">{{ recovery.description }}</p>
+                        <div class="changelog" v-if="recovery.changelog">
+                          <h5 class="changelog-title">更新日志：</h5>
+                          <ul class="changelog-list">
+                            <li v-for="(log, index) in getChangelogArray(recovery.changelog)" :key="index">{{ log }}</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="download-section">
+                        <button
+                          class="download-btn"
+                          @click="handleDownload(recovery.downloadUrl, recovery.id)"
+                        >
+                          下载Recovery
+                        </button>
+                        <span class="download-count">{{ getDownloadCount(recovery.id) }} 次下载</span>
                       </div>
                     </div>
-                    <div class="download-section">
-                      <button
-                        class="download-btn"
-                        @click="handleDownload(recovery.downloadUrl, recovery.id)"
-                      >
-                        下载Recovery
-                      </button>
-                      <span class="download-count">{{ getDownloadCount(recovery.id) }} 次下载</span>
-                    </div>
+                  </div>
+                  <div v-else class="no-resource">
+                    <p>暂无可用Recovery资源</p>
                   </div>
                 </div>
               </div>
@@ -666,29 +676,40 @@ onMounted(async () => {
 }
 
 .download-btn {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-  color: white;
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
   padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--border-radius-md);
-  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-lg);
+  color: white;
   cursor: pointer;
   transition: all var(--transition-fast);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-sm);
 }
 
 .download-btn.primary {
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: var(--font-size-md);
-  background: linear-gradient(135deg, var(--success-color), var(--success-dark));
 }
 
 .download-btn:hover {
-  transform: translateY(-1px);
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
-.download-btn.primary:hover {
-  background: linear-gradient(135deg, var(--success-dark), var(--success-darker));
+.download-btn:disabled {
+  background: var(--background-tertiary);
+  border-color: var(--background-tertiary);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .download-count {
