@@ -44,18 +44,18 @@
               <source
                 media="(prefers-color-scheme: dark)"
                 srcset="
-                  https://github-readme-stats.vercel.app/api?username=avidermin&show_icons=true&theme=tokyonight&card_width=400&hide_border=true&count_private=true&include_all_commits=true&cache_seconds=1800
+                  https://github-readme-stats-beta-one-35.vercel.app/api?username=avidermin&show_icons=true&theme=tokyonight&card_width=400&hide_border=true&count_private=true&include_all_commits=true&cache_seconds=1800
                 "
               />
               <source
                 media="(prefers-color-scheme: light)"
                 srcset="
-                  https://github-readme-stats.vercel.app/api?username=avidermin&show_icons=true&theme=default&card_width=400&hide_border=true&count_private=true&include_all_commits=true&cache_seconds=1800
+                  https://github-readme-stats-beta-one-35.vercel.app/api?username=avidermin&show_icons=true&theme=default&card_width=400&hide_border=true&count_private=true&include_all_commits=true&cache_seconds=1800
                 "
               />
               <img
                 alt="GitHub Stats"
-                src="https://github-readme-stats.vercel.app/api?username=avidermin&show_icons=true&card_width=400&hide_border=true&count_private=true&include_all_commits=true&cache_seconds=1800"
+                src="https://github-readme-stats-beta-one-35.vercel.app/api?username=avidermin&show_icons=true&card_width=400&hide_border=true&count_private=true&include_all_commits=true&cache_seconds=1800"
                 class="stats-image"
               />
             </picture>
@@ -66,18 +66,18 @@
               <source
                 media="(prefers-color-scheme: dark)"
                 srcset="
-                  https://github-readme-stats.vercel.app/api/top-langs/?username=avidermin&layout=compact&theme=tokyonight&card_width=400&hide_border=true
+                  https://github-readme-stats-beta-one-35.vercel.app/api/top-langs/?username=avidermin&layout=compact&theme=tokyonight&card_width=400&hide_border=true
                 "
               />
               <source
                 media="(prefers-color-scheme: light)"
                 srcset="
-                  https://github-readme-stats.vercel.app/api/top-langs/?username=avidermin&layout=compact&card_width=400&hide_border=true
+                  https://github-readme-stats-beta-one-35.vercel.app/api/top-langs/?username=avidermin&layout=compact&card_width=400&hide_border=true
                 "
               />
               <img
                 alt="Top Languages"
-                src="https://github-readme-stats.vercel.app/api/top-langs/?username=avidermin&layout=compact&card_width=400&hide_border=true"
+                src="https://github-readme-stats-beta-one-35.vercel.app/api/top-langs/?username=avidermin&layout=compact&card_width=400&hide_border=true"
                 class="stats-image"
               />
             </picture>
@@ -190,13 +190,13 @@
             <div class="tech-badges">
               <img
                 height="26"
-                src="https://img.shields.io/badge/Windows%2011%2025H2-00adef?style=flat-square&logo=windows&logoColor=ffffff"
-                alt="Windows11 25H2"
+                src="https://img.shields.io/badge/Windows%2011%2026H1-00adef?style=flat-square&logo=windows&logoColor=ffffff"
+                alt="Windows11 26H1"
               />
               <img
                 height="26"
-                src="https://img.shields.io/badge/Android%2015-3ddc84?style=flat-square&logo=android&logoColor=ffffff"
-                alt="Android 15"
+                src="https://img.shields.io/badge/Android%2016-3ddc84?style=flat-square&logo=android&logoColor=ffffff"
+                alt="Android 16"
               />
               <img
                 height="26"
