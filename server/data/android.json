@@ -79,7 +79,7 @@
           "size": "14.5",
           "sizeUnit": "MB",
           "description": "优化系统流畅度，提升用户体验",
-          "downloadUrl": "/downloads/kernels/k40s-v2.0.1.zip",
+          "downloadUrl": "https://olist.avider.top/d/%E9%AB%98%E9%80%9F/%E5%88%B7%E6%9C%BA/Redmi%20K40S%20-%20munch/Kernels/Nijika_Kernel/munch_Nijika-v2.3_SU_2604012.zip",
           "changelog": ["优化系统流畅度", "修复内存泄漏问题", "提升系统稳定性"]
         }
       ],
@@ -93,7 +93,7 @@
           "sizeUnit": "MB",
           "description": "基于最新OrangeFox源码的自构建版本",
           "note": "请不要向OrangeFox官方提交Bug",
-          "downloadUrl": "https://olist.avider.top/d/%E9%AB%98%E9%80%9F/%E5%88%B7%E6%9C%BA/Redmi%20K40S%20(munch)/Recovery/OrangeFox-R11.3-Unofficial-munch-2511036.zip",
+          "downloadUrl": "https://olist.avider.top/d/%E9%AB%98%E9%80%9F/%E5%88%B7%E6%9C%BA/Redmi%20K40S%20-%20munch/Recovery/OrangeFox-R11.3-Unofficial-munch-2511036.zip",
           "changelog": [
             "支持默认完整中文",
             "移除/data检查以提高启动速度",
