@@ -4,6 +4,7 @@ var HomePage = function () { return import('@/views/HomePage.vue'); };
 var AndroidDevices = function () { return import('@/views/AndroidDevices.vue'); };
 var AndroidDeviceDetail = function () { return import('@/views/AndroidDeviceDetail.vue'); };
 var PCBuild = function () { return import('@/views/PCBuild.vue'); };
+var RouterPage = function () { return import('@/views/RouterPage.vue'); };
 var ToolBox = function () { return import('@/views/ToolBox.vue'); };
 var router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,6 +47,14 @@ var router = createRouter({
             component: PCBuild,
             meta: {
                 title: '电脑装机 - Avider.top'
+            }
+        },
+        {
+            path: '/router',
+            name: 'Router',
+            component: RouterPage,
+            meta: {
+                title: '路由器固件 - Avider.top'
             }
         },
         {

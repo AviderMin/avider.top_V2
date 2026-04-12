@@ -58,6 +58,16 @@ onMounted(() => {
               </li>
               <li class="nav-item">
                 <router-link
+                  to="/router"
+                  class="nav-link"
+                  :class="{ active: route.path === '/router' }"
+                >
+                  <span class="nav-icon"><RouterIcon size="18" /></span>
+                  <span class="nav-text">路由器固件</span>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link
                   to="/tools"
                   class="nav-link"
                   :class="{ active: route.path === '/tools' }"

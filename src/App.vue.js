@@ -146,16 +146,16 @@ else {
     // @ts-ignore
     RouterLink;
     // @ts-ignore
-    var __VLS_36 = __VLS_asFunctionalComponent(__VLS_35, new __VLS_35(__assign(__assign({ to: "/tools" }, { class: "nav-link" }), { class: ({ active: __VLS_ctx.route.path === '/tools' }) })));
-    var __VLS_37 = __VLS_36.apply(void 0, __spreadArray([__assign(__assign({ to: "/tools" }, { class: "nav-link" }), { class: ({ active: __VLS_ctx.route.path === '/tools' }) })], __VLS_functionalComponentArgsRest(__VLS_36), false));
+    var __VLS_36 = __VLS_asFunctionalComponent(__VLS_35, new __VLS_35(__assign(__assign({ to: "/router" }, { class: "nav-link" }), { class: ({ active: __VLS_ctx.route.path === '/router' }) })));
+    var __VLS_37 = __VLS_36.apply(void 0, __spreadArray([__assign(__assign({ to: "/router" }, { class: "nav-link" }), { class: ({ active: __VLS_ctx.route.path === '/router' }) })], __VLS_functionalComponentArgsRest(__VLS_36), false));
     var __VLS_39 = __VLS_38.slots.default;
     // @ts-ignore
     [route,];
     __VLS_asFunctionalElement(__VLS_intrinsics.span, __VLS_intrinsics.span)(__assign({ class: "nav-icon" }));
-    var __VLS_40 = {}.WrenchIcon;
-    /** @type {[typeof __VLS_components.WrenchIcon, ]} */ ;
+    var __VLS_40 = {}.RouterIcon;
+    /** @type {[typeof __VLS_components.RouterIcon, ]} */ ;
     // @ts-ignore
-    WrenchIcon;
+    RouterIcon;
     // @ts-ignore
     var __VLS_41 = __VLS_asFunctionalComponent(__VLS_40, new __VLS_40({
         size: "18",
@@ -165,14 +165,39 @@ else {
         }], __VLS_functionalComponentArgsRest(__VLS_41), false));
     __VLS_asFunctionalElement(__VLS_intrinsics.span, __VLS_intrinsics.span)(__assign({ class: "nav-text" }));
     var __VLS_38;
+    __VLS_asFunctionalElement(__VLS_intrinsics.li, __VLS_intrinsics.li)(__assign({ class: "nav-item" }));
+    var __VLS_45 = {}.RouterLink;
+    /** @type {[typeof __VLS_components.RouterLink, typeof __VLS_components.routerLink, typeof __VLS_components.RouterLink, typeof __VLS_components.routerLink, ]} */ ;
+    // @ts-ignore
+    RouterLink;
+    // @ts-ignore
+    var __VLS_46 = __VLS_asFunctionalComponent(__VLS_45, new __VLS_45(__assign(__assign({ to: "/tools" }, { class: "nav-link" }), { class: ({ active: __VLS_ctx.route.path === '/tools' }) })));
+    var __VLS_47 = __VLS_46.apply(void 0, __spreadArray([__assign(__assign({ to: "/tools" }, { class: "nav-link" }), { class: ({ active: __VLS_ctx.route.path === '/tools' }) })], __VLS_functionalComponentArgsRest(__VLS_46), false));
+    var __VLS_49 = __VLS_48.slots.default;
+    // @ts-ignore
+    [route,];
+    __VLS_asFunctionalElement(__VLS_intrinsics.span, __VLS_intrinsics.span)(__assign({ class: "nav-icon" }));
+    var __VLS_50 = {}.WrenchIcon;
+    /** @type {[typeof __VLS_components.WrenchIcon, ]} */ ;
+    // @ts-ignore
+    WrenchIcon;
+    // @ts-ignore
+    var __VLS_51 = __VLS_asFunctionalComponent(__VLS_50, new __VLS_50({
+        size: "18",
+    }));
+    var __VLS_52 = __VLS_51.apply(void 0, __spreadArray([{
+            size: "18",
+        }], __VLS_functionalComponentArgsRest(__VLS_51), false));
+    __VLS_asFunctionalElement(__VLS_intrinsics.span, __VLS_intrinsics.span)(__assign({ class: "nav-text" }));
+    var __VLS_48;
     __VLS_asFunctionalElement(__VLS_intrinsics.main, __VLS_intrinsics.main)(__assign({ class: "app-main" }));
-    var __VLS_45 = {}.RouterView;
+    var __VLS_55 = {}.RouterView;
     /** @type {[typeof __VLS_components.RouterView, typeof __VLS_components.routerView, ]} */ ;
     // @ts-ignore
     RouterView;
     // @ts-ignore
-    var __VLS_46 = __VLS_asFunctionalComponent(__VLS_45, new __VLS_45({}));
-    var __VLS_47 = __VLS_46.apply(void 0, __spreadArray([{}], __VLS_functionalComponentArgsRest(__VLS_46), false));
+    var __VLS_56 = __VLS_asFunctionalComponent(__VLS_55, new __VLS_55({}));
+    var __VLS_57 = __VLS_56.apply(void 0, __spreadArray([{}], __VLS_functionalComponentArgsRest(__VLS_56), false));
     __VLS_asFunctionalElement(__VLS_intrinsics.footer, __VLS_intrinsics.footer)(__assign({ class: "app-footer" }));
     __VLS_asFunctionalElement(__VLS_intrinsics.div, __VLS_intrinsics.div)(__assign({ class: "container" }));
     __VLS_asFunctionalElement(__VLS_intrinsics.div, __VLS_intrinsics.div)(__assign({ class: "footer-content" }));
@@ -190,6 +215,11 @@ else {
 /** @type {__VLS_StyleScopedClasses['brand-icon']} */ ;
 /** @type {__VLS_StyleScopedClasses['brand-text']} */ ;
 /** @type {__VLS_StyleScopedClasses['navbar-nav']} */ ;
+/** @type {__VLS_StyleScopedClasses['nav-item']} */ ;
+/** @type {__VLS_StyleScopedClasses['nav-link']} */ ;
+/** @type {__VLS_StyleScopedClasses['active']} */ ;
+/** @type {__VLS_StyleScopedClasses['nav-icon']} */ ;
+/** @type {__VLS_StyleScopedClasses['nav-text']} */ ;
 /** @type {__VLS_StyleScopedClasses['nav-item']} */ ;
 /** @type {__VLS_StyleScopedClasses['nav-link']} */ ;
 /** @type {__VLS_StyleScopedClasses['active']} */ ;

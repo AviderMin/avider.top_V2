@@ -5,6 +5,7 @@ const HomePage = () => import('@/views/HomePage.vue')
 const AndroidDevices = () => import('@/views/AndroidDevices.vue')
 const AndroidDeviceDetail = () => import('@/views/AndroidDeviceDetail.vue')
 const PCBuild = () => import('@/views/PCBuild.vue')
+const RouterPage = () => import('@/views/RouterPage.vue')
 const ToolBox = () => import('@/views/ToolBox.vue')
 
 const router = createRouter({
@@ -48,6 +49,14 @@ const router = createRouter({
       component: PCBuild,
       meta: {
         title: '电脑装机 - Avider.top'
+      }
+    },
+    {
+      path: '/router',
+      name: 'Router',
+      component: RouterPage,
+      meta: {
+        title: '路由器固件 - Avider.top'
       }
     },
     {
