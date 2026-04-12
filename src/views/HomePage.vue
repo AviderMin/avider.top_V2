@@ -311,12 +311,6 @@ const loadHomeData = async () => {
       },
       {
         id: 3,
-        icon: 'music',
-        title: '音乐播放',
-        description: '在线音乐播放器，支持多种播放模式',
-      },
-      {
-        id: 4,
         icon: 'tools',
         title: '实用工具',
         description: '多种在线工具，满足日常使用需求',
@@ -334,12 +328,6 @@ const loadHomeData = async () => {
         icon: 'desktop',
         title: '电脑装机',
         description: '配置单和硬件排行',
-      },
-      {
-        path: '/music',
-        icon: 'music',
-        title: '音乐播放器',
-        description: '在线音乐播放',
       },
       {
         path: '/tools',

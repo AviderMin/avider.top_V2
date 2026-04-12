@@ -5,7 +5,6 @@ const HomePage = () => import('@/views/HomePage.vue')
 const AndroidDevices = () => import('@/views/AndroidDevices.vue')
 const AndroidDeviceDetail = () => import('@/views/AndroidDeviceDetail.vue')
 const PCBuild = () => import('@/views/PCBuild.vue')
-const MusicPlayer = () => import('@/views/MusicPlayer.vue')
 const ToolBox = () => import('@/views/ToolBox.vue')
 
 const router = createRouter({
@@ -49,14 +48,6 @@ const router = createRouter({
       component: PCBuild,
       meta: {
         title: '电脑装机 - Avider.top'
-      }
-    },
-    {
-      path: '/music',
-      name: 'Music',
-      component: MusicPlayer,
-      meta: {
-        title: '音乐播放器 - Avider.top'
       }
     },
     {

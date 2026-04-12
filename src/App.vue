@@ -58,16 +58,6 @@ onMounted(() => {
               </li>
               <li class="nav-item">
                 <router-link
-                  to="/music"
-                  class="nav-link"
-                  :class="{ active: route.path === '/music' }"
-                >
-                  <span class="nav-icon"><MusicIcon size="18" /></span>
-                  <span class="nav-text">音乐播放器</span>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link
                   to="/tools"
                   class="nav-link"
                   :class="{ active: route.path === '/tools' }"
