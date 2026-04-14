@@ -6,7 +6,7 @@
         <div class="header-content">
           <div class="avatar-container">
             <div class="avatar">
-              <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20avatar%20of%20a%20tech%20enthusiast%20with%20glasses%2C%20clean%20minimal%20style%2C%20blue%20background&image_size=square_hd" alt="AviderMin" />
+              <img src="/images/hoster/hoster.png" alt="AviderMin" />
             </div>
           </div>
           <h1 class="page-title">AviderMin</h1>
@@ -127,12 +127,6 @@
       </div>
     </section>
 
-    <!-- 页脚 -->
-    <footer class="page-footer">
-      <div class="container">
-        <p class="footer-text">© 2026 AviderMin. 保留所有权利。</p>
-      </div>
-    </footer>
   </div>
 </template>
 
