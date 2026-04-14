@@ -35,174 +35,79 @@
     <!-- GitHub状态展示区域 -->
     <section class="github-status-section">
       <div class="container">
-        <h2 class="section-title">My Status</h2>
+        <div class="profile-section">
+          <table class="profile-table">
+            <tr>
+              <td>
+                <picture>
+                  <source media="(prefers-color-scheme: dark)"
+                    srcset="https://github-readme-stats-one-bice.vercel.app/api?username=avidermin&show_icons=true&theme=tokyonight&include_all_commits=true&hide_border=true">
+                  <source media="(prefers-color-scheme: light)"
+                    srcset="https://github-readme-stats-one-bice.vercel.app/api?username=avidermin&show_icons=true&include_all_commits=true&hide_border=true">
+                  <img alt="GitHub Stats"
+                    src="https://github-readme-stats-one-bice.vercel.app/api?username=avidermin&show_icons=true&include_all_commits=true&hide_border=true"
+                    width="400" class="stats-image">
+                </picture>
+              </td>
+              <td>
+                <picture>
+                  <source media="(prefers-color-scheme: dark)"
+                    srcset="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=avidermin&layout=compact&theme=tokyonight&hide_border=true">
+                  <source media="(prefers-color-scheme: light)"
+                    srcset="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=avidermin&layout=compact&hide_border=true">
+                  <img alt="Top Languages"
+                    src="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=avidermin&layout=compact&hide_border=true"
+                    width="400" class="stats-image">
+                </picture>
+              </td>
+            </tr>
+          </table>
 
-        <!-- GitHub统计表格 -->
-        <div class="github-stats-grid">
-          <div class="stats-card">
-            <picture>
-              <source
-                media="(prefers-color-scheme: dark)"
-                srcset="
-                  https://github-readme-stats-beta-one-35.vercel.app/api?username=avidermin&show_icons=true&theme=tokyonight&card_width=400&hide_border=true&count_private=true&include_all_commits=true&cache_seconds=1800
-                "
-              />
-              <source
-                media="(prefers-color-scheme: light)"
-                srcset="
-                  https://github-readme-stats-beta-one-35.vercel.app/api?username=avidermin&show_icons=true&theme=default&card_width=400&hide_border=true&count_private=true&include_all_commits=true&cache_seconds=1800
-                "
-              />
-              <img
-                alt="GitHub Stats"
-                src="https://github-readme-stats-beta-one-35.vercel.app/api?username=avidermin&show_icons=true&card_width=400&hide_border=true&count_private=true&include_all_commits=true&cache_seconds=1800"
-                class="stats-image"
-              />
-            </picture>
-          </div>
+          <!-- 技术栈展示 -->
+          <div class="tech-stack-section">
+            <h3 class="tech-stack-title">🛠️ Technical Stack</h3>
+            
+            <h4 class="tech-subtitle">Languages & Tools</h4>
+            <div class="skill-icons">
+              <a href="https://skillicons.dev">
+                <img src="https://skillicons.dev/icons?i=c,py,bash,rust,js,html,css" />
+              </a>
+            </div>
 
-          <div class="stats-card">
-            <picture>
-              <source
-                media="(prefers-color-scheme: dark)"
-                srcset="
-                  https://github-readme-stats-beta-one-35.vercel.app/api/top-langs/?username=avidermin&layout=compact&theme=tokyonight&card_width=400&hide_border=true
-                "
-              />
-              <source
-                media="(prefers-color-scheme: light)"
-                srcset="
-                  https://github-readme-stats-beta-one-35.vercel.app/api/top-langs/?username=avidermin&layout=compact&card_width=400&hide_border=true
-                "
-              />
-              <img
-                alt="Top Languages"
-                src="https://github-readme-stats-beta-one-35.vercel.app/api/top-langs/?username=avidermin&layout=compact&card_width=400&hide_border=true"
-                class="stats-image"
-              />
-            </picture>
-          </div>
-        </div>
-
-        <!-- GitHub活动图 -->
-        <div class="activity-graph">
-          <picture>
-            <source
-              srcset="
-                https://github-readme-activity-graph.vercel.app/graph?username=avidermin&theme=github-compact&hide_border=true&bg_color=transparent
-              "
-            />
-            <img
-              src="https://github-readme-activity-graph.vercel.app/graph?username=avidermin&theme=github-compact&hide_border=true&bg_color=transparent"
-              alt="Activity Graph"
-              class="activity-image"
-            />
-          </picture>
-        </div>
-
-        <!-- 技术栈展示 -->
-        <div class="tech-stacks">
-          <div class="tech-category">
-            <h3 class="tech-title">Using Now</h3>
-            <div class="tech-badges">
-              <img
-                height="26"
-                src="https://img.shields.io/badge/Vue.js-42b883?style=flat-square&logo=vuedotjs&logoColor=white"
-                alt="Vue.js"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/Shell-black?style=flat-square&logo=gnu-bash&logoColor=white"
-                alt="Shell"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/HTML-orange?style=flat-square&logo=html5&logoColor=white"
-                alt="HTML"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/CSS-blue?style=flat-square&logo=css&logoColor=white"
-                alt="CSS"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/JavaScript-yellow?style=flat-square&logo=javascript&logoColor=black"
-                alt="JavaScript"
-              />
+            <h4 class="tech-subtitle">Currently Learning</h4>
+            <div class="skill-icons">
+              <a href="https://skillicons.dev">
+                <img src="https://skillicons.dev/icons?i=cpp,java,ts,go,kotlin" />
+              </a>
             </div>
           </div>
 
-          <div class="tech-category">
-            <h3 class="tech-title">Learning Now</h3>
-            <div class="tech-badges">
-              <img
-                height="26"
-                src="https://img.shields.io/badge/C-blue?style=flat-square&logo=c&logoColor=white"
-                alt="C"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/Python-blue?style=flat-square&logo=python&logoColor=white"
-                alt="Python"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/Java-red?style=flat-square&logo=openjdk&logoColor=white"
-                alt="Java"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white"
-                alt="Rust"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/TypeScript-blue?style=flat-square&logo=typescript&logoColor=white"
-                alt="TypeScript"
-              />
+          <!-- 硬件设备展示 -->
+          <div class="hardware-section">
+            <h3 class="tech-stack-title">💻 My Devices</h3>
+            <div class="hardware-badges">
+              <picture><img height="26" src="https://img.shields.io/badge/Xiaomi%2015-ff6900?style=flat-square&logo=xiaomi&logoColor=ffffff" alt="Xiaomi 15"/></picture>
+              <picture><img height="26" src="https://img.shields.io/badge/REDMI%20Note%2012%20Turbo-ff6900?style=flat-square&logo=xiaomi&logoColor=ffffff" alt="REDMI Note 12 Turbo"/></picture>
+              <picture><img height="26" src="https://img.shields.io/badge/REDMI%20K40S-ff6900?style=flat-square&logo=xiaomi&logoColor=ffffff" alt="REDMI K40S"/></picture>
+              <picture><img height="26" src="https://img.shields.io/badge/Xiaomi%20Pad%205-ff6900?style=flat-square&logo=xiaomi&logoColor=ffffff" alt="Xiaomi Pad 5"/></picture>
             </div>
           </div>
 
-          <div class="tech-category">
-            <h3 class="tech-title">My Devices</h3>
-            <div class="tech-badges">
-              <img
-                height="26"
-                src="https://img.shields.io/badge/REDMI%20Note%2012%20Turbo-ff6900?style=flat-square&logo=xiaomi&logoColor=ffffff"
-                alt="REDMI Note 12 Turbo"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/REDMI%20K40S-ff6900?style=flat-square&logo=xiaomi&logoColor=ffffff"
-                alt="REDMI K40S"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/Xiaomi%20Pad%205-ff6900?style=flat-square&logo=xiaomi&logoColor=ffffff"
-                alt="Xiaomi Pad 5"
-              />
+          <!-- 开发环境展示 -->
+          <div class="dev-env-section">
+            <h3 class="tech-stack-title">🧑‍💻 Development Environment</h3>
+            <div class="dev-env-badges">
+              <picture><img height="26" src="https://img.shields.io/badge/Windows%2011%2026H1-00adef?style=flat-square&logo=windows&logoColor=ffffff" alt="Windows11 26H1"/></picture>
+              <picture><img height="26" src="https://img.shields.io/badge/Android%2016-3ddc84?style=flat-square&logo=android&logoColor=ffffff" alt="Android 16"/></picture>
+              <picture><img height="26" src="https://img.shields.io/badge/WSL%20Ubuntu%2024.04.1-orange?style=flat-square&logo=ubuntu&logoColor=white" alt="WSL Ubuntu 24.04.1"/></picture>
             </div>
           </div>
 
-          <div class="tech-category">
-            <h3 class="tech-title">Development Environment</h3>
-            <div class="tech-badges">
-              <img
-                height="26"
-                src="https://img.shields.io/badge/Windows%2011%2026H1-00adef?style=flat-square&logo=windows&logoColor=ffffff"
-                alt="Windows11 26H1"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/Android%2016-3ddc84?style=flat-square&logo=android&logoColor=ffffff"
-                alt="Android 16"
-              />
-              <img
-                height="26"
-                src="https://img.shields.io/badge/WSL%20Ubuntu%2024.04.1-orange?style=flat-square&logo=ubuntu&logoColor=white"
-                alt="WSL Ubuntu 24.04.1"
-              />
+          <!-- 访问计数器 -->
+          <div class="visits-section">
+            <h3 class="tech-stack-title">✨ Total Visits</h3>
+            <div class="visit-counter">
+              <img src="https://count.getloli.com/@github-AviderMin?name=github-AviderMin&theme=rule34&darkmode=0" />
             </div>
           </div>
         </div>
@@ -559,29 +464,24 @@ onUnmounted(() => {
   background: var(--background-secondary);
 }
 
-.github-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
-}
-
-.stats-card {
-  background: var(--background-primary);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
-  transition: all var(--transition-normal);
+.profile-section {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: var(--spacing-xl);
 }
 
-.stats-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary-color);
+.profile-table {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: separate;
+  border-spacing: var(--spacing-lg);
+  margin: 0 auto;
+}
+
+.profile-table td {
+  vertical-align: top;
+  text-align: center;
 }
 
 .stats-image {
@@ -591,69 +491,131 @@ onUnmounted(() => {
   border-radius: var(--border-radius-md);
 }
 
-.activity-graph {
-  background: var(--background-primary);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
-  display: flex;
-  justify-content: center;
-}
-
-.activity-image {
+/* 技术栈区域 */
+.tech-stack-section {
   width: 100%;
   max-width: 800px;
-  height: auto;
-  border-radius: var(--border-radius-md);
-}
-
-.tech-stacks {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-.tech-category {
   background: var(--background-primary);
   border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
-  transition: all var(--transition-normal);
 }
 
-.tech-category:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary-color);
-}
-
-.tech-title {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-md);
+.tech-stack-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
   color: var(--text-primary);
   text-align: center;
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: var(--spacing-sm);
 }
 
-.tech-badges {
+.tech-subtitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: var(--spacing-lg) 0 var(--spacing-md);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.skill-icons {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
   justify-content: center;
   align-items: center;
+  margin: var(--spacing-md) 0;
 }
 
-.tech-badges img {
+.skill-icons img {
+  max-width: 100%;
+  height: auto;
   transition: transform var(--transition-fast);
 }
 
-.tech-badges img:hover {
+.skill-icons img:hover {
+  transform: scale(1.05);
+}
+
+/* 硬件设备区域 */
+.hardware-section {
+  width: 100%;
+  max-width: 800px;
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.hardware-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.hardware-badges img {
+  height: 26px;
+  transition: transform var(--transition-fast);
+}
+
+.hardware-badges img:hover {
   transform: scale(1.1);
+}
+
+/* 开发环境区域 */
+.dev-env-section {
+  width: 100%;
+  max-width: 800px;
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.dev-env-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.dev-env-badges img {
+  height: 26px;
+  transition: transform var(--transition-fast);
+}
+
+.dev-env-badges img:hover {
+  transform: scale(1.1);
+}
+
+/* 访问计数区域 */
+.visits-section {
+  width: 100%;
+  max-width: 800px;
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.visit-counter {
+  margin-top: var(--spacing-md);
+  display: flex;
+  justify-content: center;
+}
+
+.visit-counter img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* 快速导航区域 */

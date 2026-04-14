@@ -188,7 +188,7 @@
               <div class="device-specs">
                 <div class="spec-item">
                   <span class="spec-label">处理器：</span>
-                  <span class="spec-value">IPQ5000 双核1.0GHz</span>
+                  <span class="spec-value">MT7981B 双核1.3GHz</span>
                 </div>
                 <div class="spec-item">
                   <span class="spec-label">内存：</span>
