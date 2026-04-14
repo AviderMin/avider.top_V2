@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 // Lucide Vue 图标库
-import { Home, Smartphone, Monitor, Music, Wrench, Moon, Bot, Globe, Palette, File, Key, Box, Laptop, Cog, Info, Network, Code, Image, Ruler, DollarSign, Edit, Router } from 'lucide-vue-next'
+import { Home, Smartphone, Monitor, Music, Wrench, Moon, Bot, Globe, Palette, File, Key, Box, Laptop, Cog, Info, Network, Code, Image, Ruler, DollarSign, Edit, Router, User } from 'lucide-vue-next'
 
 import App from './App.vue'
 import router from './router'
@@ -39,5 +39,6 @@ app.component('RulerIcon', Ruler)
 app.component('DollarSignIcon', DollarSign)
 app.component('EditIcon', Edit)
 app.component('RouterIcon', Router)
+app.component('UserIcon', User)
 
 app.mount('#app')

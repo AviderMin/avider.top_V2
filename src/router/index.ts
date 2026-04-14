@@ -6,7 +6,7 @@ const AndroidDevices = () => import('@/views/AndroidDevices.vue')
 const AndroidDeviceDetail = () => import('@/views/AndroidDeviceDetail.vue')
 const PCBuild = () => import('@/views/PCBuild.vue')
 const RouterPage = () => import('@/views/RouterPage.vue')
-const ToolBox = () => import('@/views/ToolBox.vue')
+const HosterPage = () => import('@/views/HosterPage.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -60,11 +60,11 @@ const router = createRouter({
       }
     },
     {
-      path: '/tools',
-      name: 'Tools',
-      component: ToolBox,
+      path: '/hoster',
+      name: 'Hoster',
+      component: HosterPage,
       meta: {
-        title: '工具箱 - Avider.top'
+        title: '关于站主 - Avider.top'
       }
     }
   ],

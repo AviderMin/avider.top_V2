@@ -68,12 +68,12 @@ onMounted(() => {
               </li>
               <li class="nav-item">
                 <router-link
-                  to="/tools"
+                  to="/hoster"
                   class="nav-link"
-                  :class="{ active: route.path === '/tools' }"
+                  :class="{ active: route.path === '/hoster' }"
                 >
-                  <span class="nav-icon"><WrenchIcon size="18" /></span>
-                  <span class="nav-text">工具箱</span>
+                  <span class="nav-icon"><UserIcon size="18" /></span>
+                  <span class="nav-text">关于站主</span>
                 </router-link>
               </li>
             </ul>

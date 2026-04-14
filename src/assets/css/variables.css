@@ -40,7 +40,8 @@
   --success-color: #198754; /* 成功色 - 对比度6.8:1 */
   --warning-color: #FFC107; /* 警告色 - 在深色背景上使用 */
   --error-color: #DC3545; /* 错误色 - 对比度6.8:1 */
-  --info-color: #0DCAF0; /* 信息色 - 在深色背景上使用/* 功能色 */
+  --info-color: #0DCAF0; /* 信息色 - 在深色背景上使用 */
+  /* 功能色 */
   --link-color: #FF9800; /* 橙色链接 */
   --link-hover: #FFB74D; /* 链接悬停色 */
   --focus-color: #FFE0B2; /* 焦点轮廓色 */

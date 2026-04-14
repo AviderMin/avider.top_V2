@@ -235,10 +235,10 @@ const loadHomeData = async () => {
         description: '配置单和硬件排行',
       },
       {
-        path: '/tools',
-        icon: 'tools',
-        title: '工具箱',
-        description: '实用工具集合',
+        path: '/hoster',
+        icon: 'user',
+        title: '关于站主',
+        description: '站主介绍和社交媒体',
       },
     ]
   } finally {
