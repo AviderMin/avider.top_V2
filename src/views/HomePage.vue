@@ -70,14 +70,14 @@
             <h4 class="tech-subtitle">Languages & Tools</h4>
             <div class="skill-icons">
               <a href="https://skillicons.dev">
-                <img src="https://skillicons.dev/icons?i=c,py,bash,rust,js,html,css" />
+                <img src="https://skillicons.dev/icons?i=c,py,bash,js,html,css" />
               </a>
             </div>
 
             <h4 class="tech-subtitle">Currently Learning</h4>
             <div class="skill-icons">
               <a href="https://skillicons.dev">
-                <img src="https://skillicons.dev/icons?i=cpp,java,ts,go,kotlin" />
+                <img src="https://skillicons.dev/icons?i=cpp,rust,java,ts,go,kotlin" />
               </a>
             </div>
           </div>
