@@ -90,7 +90,7 @@ onMounted(() => {
       <footer class="app-footer">
         <div class="container">
           <div class="footer-content">
-            <p>&copy; 2025 Avider.top - 个人综合性Web网站</p>
+            <p>&copy; 2026 Avider.top - 个人综合性Web网站</p>
           </div>
         </div>
       </footer>

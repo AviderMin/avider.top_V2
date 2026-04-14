@@ -11,7 +11,7 @@
     <!-- 固件介绍区域 -->
     <section class="firmware-section">
       <div class="container">
-        <h2 class="section-title">固件系统介绍</h2>
+        <h2 class="section-title"> </h2>
         
         <div class="firmware-grid">
           <!-- OpenWrt -->
@@ -267,74 +267,75 @@ import { RouterIcon } from 'lucide-vue-next'
 <style scoped>
 .router-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--background-secondary);
 }
 
 .page-header {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 60px 0 40px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  padding: var(--spacing-xxl) 0 var(--spacing-xl);
   text-align: center;
   color: white;
 }
 
 .page-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }
 
 .page-description {
-  font-size: 1.2rem;
+  font-size: var(--font-size-lg);
   opacity: 0.9;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--max-content-width);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--spacing-md);
 }
 
 .section-title {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
   text-align: center;
-  margin-bottom: 3rem;
-  color: #2d3748;
+  margin-bottom: var(--spacing-xl);
+  color: var(--text-primary);
 }
 
 /* 固件卡片样式 */
 .firmware-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xxl);
 }
 
 .firmware-card {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .firmware-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
 }
 
 .firmware-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
 }
 
 .firmware-icon {
@@ -342,30 +343,30 @@ import { RouterIcon } from 'lucide-vue-next'
 }
 
 .firmware-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #2d3748;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
   margin: 0;
 }
 
 .firmware-badge {
-  background: #4299e1;
+  background: var(--primary-color);
   color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 .firmware-description {
-  color: #4a5568;
+  color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 .firmware-features h4 {
-  color: #2d3748;
-  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
 }
 
 .firmware-features ul {
@@ -374,47 +375,52 @@ import { RouterIcon } from 'lucide-vue-next'
 }
 
 .firmware-features li {
-  padding: 0.25rem 0;
-  color: #4a5568;
+  padding: var(--spacing-xs) 0;
+  color: var(--text-secondary);
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: var(--spacing-xl);
 }
 
 .firmware-features li::before {
   content: "✓";
   position: absolute;
   left: 0;
-  color: #48bb78;
+  color: var(--success-color);
   font-weight: bold;
 }
 
 /* 设备卡片样式 */
 .devices-section {
-  background: #f7fafc;
-  padding: 4rem 0;
+  background: var(--background-primary);
+  padding: var(--spacing-xxl) 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .devices-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  gap: var(--spacing-lg);
 }
 
 .device-card {
-  background: white;
-  border-radius: 12px;
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .device-card:hover {
   transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
 }
 
 .device-image {
   height: 200px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -427,68 +433,69 @@ import { RouterIcon } from 'lucide-vue-next'
 
 .image-placeholder span {
   display: block;
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  font-weight: 600;
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
 }
 
 .device-info {
-  padding: 1.5rem;
+  padding: var(--spacing-lg);
 }
 
 .device-name {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #2d3748;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
 }
 
 .device-specs {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
 }
 
 .spec-item {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #e2e8f0;
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .spec-label {
-  color: #718096;
-  font-weight: 500;
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
 }
 
 .spec-value {
-  color: #2d3748;
-  font-weight: 600;
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .device-compatibility {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
 }
 
 .compatibility-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 .compatibility-badge.openwrt {
-  background: #4299e1;
+  background: var(--primary-color);
   color: white;
 }
 
 .compatibility-badge.immortalwrt {
-  background: #48bb78;
+  background: var(--secondary-color);
   color: white;
 }
 
 /* 指南区域样式 */
 .guide-section {
-  padding: 4rem 0;
+  padding: var(--spacing-xxl) 0;
 }
 
 .guide-content {
@@ -499,69 +506,69 @@ import { RouterIcon } from 'lucide-vue-next'
 .warning-box {
   background: #fed7d7;
   border: 1px solid #feb2b2;
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 .warning-box h4 {
   color: #c53030;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-xs);
 }
 
 .warning-box ul {
-  margin: 0.5rem 0 0 1.5rem;
+  margin: var(--spacing-xs) 0 0 var(--spacing-xl);
   color: #744210;
 }
 
 .guide-steps {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 .guide-steps h3 {
-  color: #2d3748;
-  margin-bottom: 1rem;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
 }
 
 .guide-steps ol {
-  margin-left: 1.5rem;
-  color: #4a5568;
+  margin-left: var(--spacing-xl);
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
 .guide-steps li {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-xs);
 }
 
 .resources h3 {
-  color: #2d3748;
-  margin-bottom: 1rem;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
 }
 
 .resource-links {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-md);
   flex-wrap: wrap;
 }
 
 .resource-link {
-  background: #4299e1;
+  background: var(--primary-color);
   color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
   text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s ease;
+  font-weight: var(--font-weight-medium);
+  transition: background var(--transition-fast);
 }
 
 .resource-link:hover {
-  background: #3182ce;
+  background: var(--primary-dark);
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
   .page-title {
-    font-size: 2rem;
+    font-size: var(--font-size-xl);
   }
   
   .firmware-grid,

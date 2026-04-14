@@ -127,22 +127,10 @@
       </div>
     </section>
 
-    <!-- 网站图标 -->
-    <section class="logo-section">
-      <div class="container">
-        <h2 class="section-title">网站标识</h2>
-        <div class="logo-container">
-          <div class="logo-box">
-            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20tech%20logo%20with%20letter%20A%2C%20minimal%20design%2C%20blue%20and%20white%20color%20scheme%2C%20clean%20lines&image_size=square_hd" alt="AviderMin Logo" />
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- 页脚 -->
     <footer class="page-footer">
       <div class="container">
-        <p class="footer-text">© 2024 AviderMin. 保留所有权利。</p>
+        <p class="footer-text">© 2026 AviderMin. 保留所有权利。</p>
       </div>
     </footer>
   </div>

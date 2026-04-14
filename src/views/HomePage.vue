@@ -70,7 +70,7 @@
             <h4 class="tech-subtitle">Languages & Tools</h4>
             <div class="skill-icons">
               <a href="https://skillicons.dev">
-                <img src="https://skillicons.dev/icons?i=c,py,bash,js,html,css" />
+                <img src="https://skillicons.dev/icons?i=bash,js,html,css,c,py" />
               </a>
             </div>
 
