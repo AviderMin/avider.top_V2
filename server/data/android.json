@@ -74,12 +74,12 @@
         {
           "id": "kernel-3",
           "name": "稳定流畅版内核",
-          "version": "2.0.1",
-          "date": "2024-01-08",
-          "size": "14.5",
+          "version": "2.4-6",
+          "date": "2026-04-14",
+          "size": "22.12",
           "sizeUnit": "MB",
           "description": "优化系统流畅度，提升用户体验",
-          "downloadUrl": "https://olist.avider.top/d/%E9%AB%98%E9%80%9F/%E5%88%B7%E6%9C%BA/Redmi%20K40S%20-%20munch/Kernels/Nijika_Kernel/munch_Nijika-v2.3_SU_2604012.zip",
+          "downloadUrl": "https://olist.avider.top/d/%E9%AB%98%E9%80%9F/%E5%88%B7%E6%9C%BA/Redmi%20K40S%20-%20munch/Kernels/Nijika_Kernel/munch_Nijika-v2.4_SU_2604126.zip",
           "changelog": ["合并v4.19.325", "Backport bpf-5.10 以支持Android16", "更新内置NoGKI Kernel","提高了随机读写性能"]
         }
       ],
