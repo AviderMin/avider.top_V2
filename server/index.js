@@ -5,21 +5,30 @@ const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const DIST_DIR = path.join(__dirname, '../dist');
+const DATA_DIR = path.join(__dirname, 'data');
 
 // 中间件配置
 app.use(cors());
 app.use(express.json());
 // 只有在dist目录存在时才启用静态文件服务
-if (fs.existsSync(path.join(__dirname, '../dist'))) {
-    app.use(express.static(path.join(__dirname, '../dist')));
+if (fs.existsSync(DIST_DIR)) {
+    app.use(express.static(DIST_DIR));
 }
-
-// 数据文件路径
-const DATA_DIR = path.join(__dirname, 'data');
 
 // 确保数据目录存在
 if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
+}
+
+function readDataFile(fileName) {
+    const filePath = path.join(DATA_DIR, fileName);
+
+    if (!fs.existsSync(filePath)) {
+        return null;
+    }
+
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
 // API路由
@@ -27,7 +36,10 @@ if (!fs.existsSync(DATA_DIR)) {
 // 首页数据
 app.get('/api/home', (req, res) => {
     try {
-        const homeData = require('./data/home.json');
+        const homeData = readDataFile('home.json');
+        if (!homeData) {
+            return res.status(404).json({ error: '首页数据不存在' });
+        }
         res.json(homeData);
     } catch (error) {
         res.status(500).json({ error: '首页数据加载失败' });
@@ -37,7 +49,10 @@ app.get('/api/home', (req, res) => {
 // 安卓刷机数据
 app.get('/api/android', (req, res) => {
     try {
-        const androidData = require('./data/android.json');
+        const androidData = readDataFile('android.json');
+        if (!androidData) {
+            return res.status(404).json({ error: '安卓数据不存在' });
+        }
         res.json(androidData);
     } catch (error) {
         res.status(500).json({ error: '安卓数据加载失败' });
@@ -47,17 +62,36 @@ app.get('/api/android', (req, res) => {
 // 电脑装机数据
 app.get('/api/pc', (req, res) => {
     try {
-        const pcData = require('./data/pc.json');
+        const pcData = readDataFile('pc.json');
+        if (!pcData) {
+            return res.status(404).json({ error: '电脑装机数据不存在' });
+        }
         res.json(pcData);
     } catch (error) {
         res.status(500).json({ error: '电脑装机数据加载失败' });
     }
 });
 
+// 教程数据
+app.get('/api/tutorials', (req, res) => {
+    try {
+        const tutorialsData = readDataFile('tutorials.json');
+        if (!tutorialsData) {
+            return res.status(404).json({ error: '教程数据不存在' });
+        }
+        res.json(tutorialsData);
+    } catch (error) {
+        res.status(500).json({ error: '教程数据加载失败' });
+    }
+});
+
 // 音乐播放器数据
 app.get('/api/music', (req, res) => {
     try {
-        const musicData = require('./data/music.json');
+        const musicData = readDataFile('music.json');
+        if (!musicData) {
+            return res.status(404).json({ error: '音乐数据不存在' });
+        }
         res.json(musicData);
     } catch (error) {
         res.status(500).json({ error: '音乐数据加载失败' });
@@ -67,7 +101,10 @@ app.get('/api/music', (req, res) => {
 // 工具箱数据
 app.get('/api/tools', (req, res) => {
     try {
-        const toolsData = require('./data/tools.json');
+        const toolsData = readDataFile('tools.json');
+        if (!toolsData) {
+            return res.status(404).json({ error: '工具箱数据不存在' });
+        }
         res.json(toolsData);
     } catch (error) {
         res.status(500).json({ error: '工具箱数据加载失败' });
@@ -110,9 +147,9 @@ app.get('/api/download-stats', (req, res) => {
 });
 
 // 默认路由 - 只在生产环境下返回Vue应用
-if (process.env.NODE_ENV === 'production' && fs.existsSync(path.join(__dirname, '../dist'))) {
+if (process.env.NODE_ENV === 'production' && fs.existsSync(DIST_DIR)) {
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../dist/index.html'));
+        res.sendFile(path.join(DIST_DIR, 'index.html'));
     });
 }
 

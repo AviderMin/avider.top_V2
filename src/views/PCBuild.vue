@@ -209,24 +209,49 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { pcAPI } from '@/services/api'
 import { 
   Monitor, Cpu, HardDrive, Monitor as Display, 
   Zap
 } from 'lucide-vue-next'
 
-// 配置数据
-const configurations = ref([])
+interface PCComponent {
+  type: string
+  brand: string
+  model: string
+  specs: string
+  price: number
+}
 
-// 排行榜数据
-const rankings = ref({})
+interface PCConfiguration {
+  id: string
+  name: string
+  category: string
+  performance: number
+  description: string
+  components: PCComponent[]
+}
+
+interface RankingEntry {
+  model: string
+  score: number
+  price?: number
+  recommendation?: number
+}
+
+type RankingsMap = Record<string, RankingEntry[]>
+
+type PCDataResponse = {
+  configurations?: PCConfiguration[]
+  rankings?: RankingsMap
+}
+
+const configurations = ref<PCConfiguration[]>([])
+const rankings = ref<RankingsMap>({})
 
 // 状态管理
 const selectedConfig = ref<string | null>(null)
-const compareConfig1 = ref('')
-const compareConfig2 = ref('')
-const showComparison = ref(false)
 const isLoading = ref(true)
 
 // 方法
@@ -236,10 +261,6 @@ const selectConfig = (configId: string) => {
 
 const getSelectedConfig = () => {
   return configurations.value.find((config) => config.id === selectedConfig.value)
-}
-
-const getConfigById = (id: string) => {
-  return configurations.value.find((config) => config.id === id)
 }
 
 // 获取硬件图标
@@ -260,24 +281,6 @@ const getComponentIcon = (type: string) => {
 }
 
 // 获取硬件图标类名（基于WindowsDevices.vue的实现风格）
-const getComponentIconClass = (componentName: string) => {
-  // 根据组件类型返回对应的Tailwind CSS类名
-  const classMap: Record<string, string> = {
-    CPU: 'w-4 h-4 text-blue-500',
-    主板: 'w-4 h-4 text-green-500',
-    内存: 'w-4 h-4 text-purple-500',
-    显卡: 'w-4 h-4 text-red-500',
-    硬盘: 'w-4 h-4 text-yellow-500',
-    电源: 'w-4 h-4 text-orange-500',
-    机箱: 'w-4 h-4 text-gray-500',
-    显示器: 'w-4 h-4 text-indigo-500',
-    散热器: 'w-4 h-4 text-cyan-500',
-    风扇: 'w-4 h-4 text-teal-500',
-  }
-  
-  return classMap[componentName] || 'w-4 h-4 text-gray-500'
-}
-
 // 加载电脑装机数据
 const loadPCData = async () => {
   try {
@@ -286,11 +289,13 @@ const loadPCData = async () => {
 
     // 更新数据
     if (response) {
-      if ((response as any).configurations) {
-        configurations.value = (response as any).configurations
+      const data = response as PCDataResponse
+
+      if (data.configurations) {
+        configurations.value = data.configurations
       }
-      if ((response as any).rankings) {
-        rankings.value = (response as any).rankings
+      if (data.rankings) {
+        rankings.value = data.rankings
       }
     }
   } catch (error) {

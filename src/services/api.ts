@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+type JsonObject = Record<string, unknown>
+
 // 创建axios实例
 const api = axios.create({
   baseURL: '/api',
@@ -35,7 +37,7 @@ api.interceptors.response.use(
 // 首页相关API
 export const homeAPI = {
   // 获取首页数据
-  getHomeData: () => api.get('/home'),
+  getHomeData: () => api.get<JsonObject>('/home'),
   
   // 更新首页数据
   updateHomeData: (data: any) => api.put('/home', data),
@@ -50,7 +52,7 @@ export const homeAPI = {
 // 安卓刷机相关API
 export const androidAPI = {
   // 获取所有设备列表
-  getDevices: () => api.get('/android/devices'),
+  getDevices: () => api.get<JsonObject>('/android/devices'),
   
   // 获取单个设备详情
   getDevice: (deviceId: string) => api.get(`/android/devices/${deviceId}`),
@@ -65,10 +67,10 @@ export const androidAPI = {
   getDownloadStats: () => api.get('/download-stats'),
   
   // 获取安卓数据
-  getAndroidData: () => api.get('/android'),
+  getAndroidData: () => api.get<JsonObject>('/android'),
   
   // 获取教程数据
-  getTutorials: () => api.get('/tutorials')
+  getTutorials: () => api.get<JsonObject>('/tutorials')
 }
 
 // 电脑装机相关API
@@ -84,7 +86,7 @@ export const pcAPI = {
     api.get(`/pc/compare?config1=${config1}&config2=${config2}`),
   
   // 获取PC数据
-  getPCData: () => api.get('/pc')
+  getPCData: () => api.get<JsonObject>('/pc')
 }
 
 // 音乐播放器相关API

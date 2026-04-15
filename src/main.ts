@@ -1,16 +1,17 @@
-import { createApp } from 'vue'
+import { createApp, type Component } from 'vue'
 import { createPinia } from 'pinia'
 
 // Lucide Vue 图标库
 import { Home, Smartphone, Monitor, Music, Wrench, Moon, Bot, Globe, Palette, File, Key, Box, Laptop, Cog, Info, Network, Code, Image, Ruler, DollarSign, Edit, Router, User } from 'lucide-vue-next'
 
-import App from './App.vue'
+import * as AppModule from './App.vue'
 import router from './router'
 
 // 引入全局样式
 import './assets/css/variables.css'
 import './assets/css/base.css'
 
+const App = (AppModule as { default?: Component }).default ?? (AppModule as unknown as Component)
 const app = createApp(App)
 
 app.use(createPinia())

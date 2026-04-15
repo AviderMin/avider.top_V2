@@ -122,17 +122,48 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { homeAPI } from '@/services/api'
 
-// Banner数据
-const bannerImages = ref([])
+interface BannerImage {
+  src: string
+  alt?: string
+  title: string
+  description: string
+}
 
-// 个人介绍数据
-const introData = ref({})
+interface IntroData {
+  title?: string
+  content?: string
+  description?: string
+}
 
-// 功能特性数据
-const features = ref([])
+interface FeatureItem {
+  id: number | string
+  icon: string
+  title: string
+  description: string
+}
 
-// 快速导航数据
-const quickNav = ref([])
+interface QuickNavItem {
+  path?: string
+  link?: string
+  icon: string
+  title: string
+  description: string
+}
+
+type HomeApiResponse = {
+  banner?: {
+    images?: BannerImage[]
+    slides?: Array<BannerImage & { image?: string }>
+  }
+  introData?: IntroData
+  features?: FeatureItem[] | { items?: FeatureItem[] }
+  quickNav?: QuickNavItem[] | { items?: QuickNavItem[] }
+}
+
+const bannerImages = ref<BannerImage[]>([])
+const introData = ref<IntroData>({})
+const features = ref<FeatureItem[]>([])
+const quickNav = ref<QuickNavItem[]>([])
 
 // Banner轮播逻辑
 const currentSlide = ref(0)
@@ -167,18 +198,28 @@ const loadHomeData = async () => {
     const response = await homeAPI.getHomeData()
 
     // 更新数据（如果后端有提供）
-    if (response && response.data) {
-      if (response.data.banner && response.data.banner.images) {
-        bannerImages.value = response.data.banner.images
+    if (response) {
+      const data = response as HomeApiResponse
+
+      if (data.banner?.images) {
+        bannerImages.value = data.banner.images
       }
-      if (response.data.introData) {
-        introData.value = response.data.introData
+      if (data.banner?.slides) {
+        bannerImages.value = data.banner.slides.map((slide) => ({
+          src: slide.src || slide.image || '',
+          alt: slide.alt,
+          title: slide.title,
+          description: slide.description,
+        }))
       }
-      if (response.data.features) {
-        features.value = response.data.features
+      if (data.introData) {
+        introData.value = data.introData
       }
-      if (response.data.quickNav) {
-        quickNav.value = response.data.quickNav
+      if (data.features) {
+        features.value = Array.isArray(data.features) ? data.features : (data.features.items ?? [])
+      }
+      if (data.quickNav) {
+        quickNav.value = Array.isArray(data.quickNav) ? data.quickNav : (data.quickNav.items ?? [])
       }
     }
   } catch (error) {
