@@ -37,30 +37,32 @@
       <div class="container">
         <div class="profile-section">
           <table class="profile-table">
-            <tr>
-              <td>
-                <picture>
-                  <source media="(prefers-color-scheme: dark)"
-                    srcset="https://github-readme-stats-one-bice.vercel.app/api?username=avidermin&show_icons=true&theme=tokyonight&include_all_commits=true&hide_border=true">
-                  <source media="(prefers-color-scheme: light)"
-                    srcset="https://github-readme-stats-one-bice.vercel.app/api?username=avidermin&show_icons=true&include_all_commits=true&hide_border=true">
-                  <img alt="GitHub Stats"
-                    src="https://github-readme-stats-one-bice.vercel.app/api?username=avidermin&show_icons=true&include_all_commits=true&hide_border=true"
-                    width="400" class="stats-image">
-                </picture>
-              </td>
-              <td>
-                <picture>
-                  <source media="(prefers-color-scheme: dark)"
-                    srcset="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=avidermin&layout=compact&theme=tokyonight&hide_border=true">
-                  <source media="(prefers-color-scheme: light)"
-                    srcset="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=avidermin&layout=compact&hide_border=true">
-                  <img alt="Top Languages"
-                    src="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=avidermin&layout=compact&hide_border=true"
-                    width="400" class="stats-image">
-                </picture>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>
+                  <picture>
+                    <source media="(prefers-color-scheme: dark)"
+                      srcset="https://github-readme-stats-one-bice.vercel.app/api?username=avidermin&show_icons=true&theme=tokyonight&include_all_commits=true&hide_border=true">
+                    <source media="(prefers-color-scheme: light)"
+                      srcset="https://github-readme-stats-one-bice.vercel.app/api?username=avidermin&show_icons=true&include_all_commits=true&hide_border=true">
+                    <img alt="GitHub Stats"
+                      src="https://github-readme-stats-one-bice.vercel.app/api?username=avidermin&show_icons=true&include_all_commits=true&hide_border=true"
+                      width="400" class="stats-image">
+                  </picture>
+                </td>
+                <td>
+                  <picture>
+                    <source media="(prefers-color-scheme: dark)"
+                      srcset="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=avidermin&layout=compact&theme=tokyonight&hide_border=true">
+                    <source media="(prefers-color-scheme: light)"
+                      srcset="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=avidermin&layout=compact&hide_border=true">
+                    <img alt="Top Languages"
+                      src="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=avidermin&layout=compact&hide_border=true"
+                      width="400" class="stats-image">
+                  </picture>
+                </td>
+              </tr>
+            </tbody>
           </table>
 
           <!-- 技术栈展示 -->
