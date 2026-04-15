@@ -1,7 +1,12 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
-const express = require('../server/index.js');
+
+// 导入并启动后端服务器
+const server = require('../server/index.js');
+
+// 存储后端服务器端口
+let serverPort = 3000;
 
 let mainWindow;
 

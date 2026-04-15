@@ -6,7 +6,7 @@
         <div class="header-content">
           <div class="avatar-container">
             <div class="avatar">
-              <img src="/images/hoster/hoster.png" alt="AviderMin" />
+              <img :src="getAvatarPath()" alt="AviderMin" />
             </div>
           </div>
           <h1 class="page-title">AviderMin</h1>
@@ -141,7 +141,13 @@
 </template>
 
 <script setup lang="ts">
-// 页面逻辑
+import { electronEnv } from '@/services/api'
+
+// 计算头像图片路径
+const getAvatarPath = () => {
+  const avatarPath = '/images/hoster/hoster.png'
+  return electronEnv ? `http://localhost:3000${avatarPath}` : avatarPath
+}
 </script>
 
 <style scoped>

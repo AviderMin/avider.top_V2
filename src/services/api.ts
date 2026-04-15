@@ -2,14 +2,20 @@ import axios from 'axios'
 
 type JsonObject = Record<string, unknown>
 
+// 检测是否在Electron环境中
+const isElectron = typeof window !== 'undefined' && window.process && (window.process as any).type;
+
 // 创建axios实例
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: isElectron ? 'http://localhost:3000/api' : '/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
   }
 })
+
+// 导出isElectron变量供其他模块使用
+export const electronEnv = isElectron;
 
 // 请求拦截器
 api.interceptors.request.use(

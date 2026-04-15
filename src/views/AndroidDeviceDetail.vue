@@ -243,7 +243,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { androidAPI } from '@/services/api'
+import { androidAPI, electronEnv } from '@/services/api'
 
 const route = useRoute()
 const router = useRouter()
@@ -279,16 +279,28 @@ const getPartitionType = () => {
 
 // 获取设备图片路径
 const getDeviceImage = (device: any) => {
+  let imagePath = ''
   if (device?.image) {
-    return device.image
+    imagePath = device.image
+  } else {
+    imagePath = `/images/android/devices/${deviceId.value}.png`
   }
-  return `/images/android/devices/${deviceId.value}.png`
+  // 在Electron环境中，通过后端服务器访问图片
+  return electronEnv ? `http://localhost:3000${imagePath}` : imagePath
 }
 
 // 处理图片加载错误
 const handleImageError = (event: Event) => {
   const img = event.target as HTMLImageElement
-  img.src = '/images/android/default-device.png'
+  // 防止无限循环
+  if (img.src.includes('marble.png')) {
+    return
+  }
+  // 设置默认图片（使用已存在的marble.png）
+  const defaultImagePath = '/images/android/devices/marble.png'
+  // 在Electron环境中，通过后端服务器访问图片
+  img.src = electronEnv ? `http://localhost:3000${defaultImagePath}` : defaultImagePath
+  console.warn(`设备图片加载失败: ${img.alt}`)
 }
 
 // 获取下载次数

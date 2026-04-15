@@ -153,9 +153,26 @@ if (process.env.NODE_ENV === 'production' && fs.existsSync(DIST_DIR)) {
     });
 }
 
-app.listen(PORT, () => {
-    console.log(`服务器运行在 http://localhost:${PORT}`);
-});
+// 尝试启动服务器，处理端口占用问题
+function startServer(port) {
+    const server = app.listen(port, () => {
+        console.log(`服务器运行在 http://localhost:${port}`);
+        // 存储实际使用的端口
+        module.exports.port = port;
+    });
+
+    server.on('error', (error) => {
+        if (error.code === 'EADDRINUSE') {
+            console.log(`端口 ${port} 已被占用，尝试使用端口 ${port + 1}`);
+            startServer(port + 1);
+        } else {
+            console.error('服务器启动失败:', error);
+        }
+    });
+}
+
+// 启动服务器
+startServer(PORT);
 
 // 导出app供Electron使用
 module.exports = app;
