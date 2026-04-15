@@ -23,5 +23,10 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, '/api')
       }
     }
+  },
+  base: './',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets'
   }
 })

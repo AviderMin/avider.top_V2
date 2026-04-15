@@ -156,3 +156,6 @@ if (process.env.NODE_ENV === 'production' && fs.existsSync(DIST_DIR)) {
 app.listen(PORT, () => {
     console.log(`服务器运行在 http://localhost:${PORT}`);
 });
+
+// 导出app供Electron使用
+module.exports = app;
