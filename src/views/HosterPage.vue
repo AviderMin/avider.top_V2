@@ -93,6 +93,16 @@
             <h3 class="social-title">资源站</h3>
             <p class="social-description">实用资源和工具集合</p>
           </a>
+
+          <a href="https://bot.avider.top/" target="_blank" class="social-card bot">
+            <div class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3 class="social-title">AstrBot</h3>
+            <p class="social-description">智能机器人仪表盘</p>
+          </a>
         </div>
       </div>
     </section>
@@ -264,6 +274,15 @@
 .social-card.resource:hover {
   border-color: var(--primary-color);
   background: rgba(0, 123, 255, 0.05);
+}
+
+.social-card.bot:hover {
+  border-color: #4CAF50;
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.social-card.bot .social-icon {
+  color: #4CAF50;
 }
 
 .social-icon {
